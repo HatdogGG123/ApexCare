@@ -213,13 +213,6 @@
                 </section>
                 <section class="flex items-center gap-3">
                     <p class="text-3xl font-medium">₱1,294</p>
-                    <div class="flex items-center gap-1 text-green-700 bg-green-200 px-2 py-1 rounded-full">
-                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 7h6v6" />
-                            <path d="m22 7-8.5 8.5-5-5L2 17" />
-                        </svg>
-                        <p class="text-sm">12.21%</p>
-                    </div>
                 </section>
             </section>
 
@@ -241,13 +234,6 @@
                 </section>
                 <section class="flex items-center gap-3">
                     <p class="text-3xl font-medium">₱40,294</p>
-                    <div class="flex items-center gap-1 text-green-700 bg-green-200 px-2 py-1 rounded-full">
-                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 7h6v6" />
-                            <path d="m22 7-8.5 8.5-5-5L2 17" />
-                        </svg>
-                        <p class="text-sm">30.21%</p>
-                    </div>
                 </section>
             </section>
 
@@ -525,7 +511,7 @@
         </section>
     </main>
 
-    <script src="./js/jquery.min.js"></script>
+    <script src="../../js/jquery.min.js"></script>
     <script>
         $("#openSidebarBtn").click(() => {
             $("#sidebar").slideDown();

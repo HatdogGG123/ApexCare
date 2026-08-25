@@ -40,6 +40,98 @@
         <p>Back to top</p>
     </button>
 
+    <!-- Filter -->
+    <aside id="salesFilterPanel" class="hidden fixed z-60 flex items-end justify-end bg-gray-600/40 w-full h-dvh">
+        <!-- Panel Content -->
+        <section class="relative z-10 w-full h-[80dvh] bg-white shadow-2xl flex flex-col justify-between font-display lg:h-dvh lg:w-[40%] xl:w-[25%]">
+            <!-- Header -->
+            <section class="p-5 border-b flex items-center justify-between bg-gray-50/50">
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900">Filter</h2>
+                </section>
+                <button type="button" class="closeFilterBtn text-gray-400 hover:text-gray-600 transition-colors p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </section>
+
+            <!-- Form Scroll Area -->
+            <section class="p-5 overflow-y-auto flex-1 flex flex-col gap-5 text-sm scrollbar-none">
+
+                <!-- Category 1: Date Recorded Range -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400">Date Recorded</label>
+
+                    <section class="grid grid-cols-2 gap-3">
+                        <!-- From Date Input -->
+                        <section>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">From</label>
+                            <input type="date" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-xs text-gray-700 focus:ring-2 focus:ring-secondary focus:outline-none" />
+                        </section>
+
+                        <!-- To Date Input -->
+                        <section>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">To</label>
+                            <input type="date" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-xs text-gray-700 focus:ring-2 focus:ring-secondary focus:outline-none" />
+                        </section>
+                    </section>
+                </section>
+
+                <hr class="border-gray-100">
+
+                <!-- Category 2: Customer Type -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400">Customer Type</label>
+
+                    <section class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="customer_type" value="walk_in" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Walk-in</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="customer_type" value="regular" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Regular Patient</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="customer_type" value="senior_pwd" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Senior Citizen / PWD</span>
+                        </label>
+                    </section>
+                </section>
+
+                <hr class="border-gray-100">
+
+                <!-- Category 3: Sales Type -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400">Sales Type</label>
+
+                    <section class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="sales_type" value="over_the_counter" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Over-the-Counter (OTC)</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="sales_type" value="prescription" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Prescription Sale</span>
+                        </label>
+                    </section>
+                </section>
+
+            </section>
+
+            <!-- Footer Action Buttons -->
+            <section class="p-4 border-t bg-white flex items-center gap-3">
+                <button type="reset" class="w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2.5 rounded-lg text-sm transition-colors">
+                    Reset
+                </button>
+                <button type="button" class="w-2/3 bg-[#2d3e50] hover:bg-[#1e2a38] text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
+                    Apply Filters
+                </button>
+            </section>
+        </section>
+    </aside>
+
     <!-- Detail View Panel -->
     <aside id="viewDetailPanel" class="hidden fixed top-0 right-0 z-60 bg-gray-900/40 w-dvw h-dvh border-l flex flex-col justify-end font-display transition duration-200 lg:flex-row">
         <!-- Main Content Wrapper -->
@@ -60,7 +152,7 @@
                 <!-- Inventory Status Card -->
                 <section class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col gap-2 w-full">
                     <section class="flex items-center justify-between">
-                        <span class="text-xs font-medium text-gray-700 uppercase tracking-wider">Sales Type</span>
+                        <span class="text-xs font-medium text-gray-700">Sales Type</span>
                         <span class="bg-gray-200 border border-gray-500 text-gray-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                             OTC
                         </span>
@@ -78,7 +170,7 @@
                 <!-- Purchased Items List -->
                 <section class="flex flex-col gap-3 w-full">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Purchased Items</h3>
+                        <h3 class="text-xs font-medium text-gray-400">Purchased Items</h3>
                         <span class="text-xs text-gray-500 font-medium">3 Items</span>
                     </div>
 
@@ -183,7 +275,7 @@
             <section class="p-5 overflow-y-auto flex-1 flex flex-col gap-5 text-sm scrollbar-none">
                 <!-- Customer Details -->
                 <section class="flex flex-col gap-3">
-                    <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Customer & Order Info</label>
+                    <label class="text-xs font-medium text-gray-400">Customer & Order Info</label>
 
                     <section>
                         <label class="block text-xs font-semibold text-gray-700 mb-1">Customer Type</label>
@@ -212,7 +304,7 @@
                 <!-- Medicine Entry Section -->
                 <section class="flex flex-col gap-3">
                     <section class="flex justify-between items-center">
-                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Medicine Item Details</label>
+                        <label class="text-xs font-medium text-gray-400">Medicine Item Details</label>
                     </section>
 
                     <!-- Custom Dropdown with Search Input -->
@@ -286,7 +378,7 @@
                 <!-- Added Items List (Cart) Section -->
                 <section class="flex flex-col gap-3">
                     <section class="flex items-center justify-between">
-                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Added Items</label>
+                        <label class="text-xs font-medium text-gray-400">Added Items</label>
                         <span class="text-xs font-semibold text-secondary bg-blue-50 px-2 py-0.5 rounded-full">2 Items</span>
                     </section>
 
@@ -339,7 +431,7 @@
 
                 <!-- Summary Breakdown -->
                 <section class="bg-gray-50 p-4 rounded-xl border border-gray-200 flex flex-col gap-2">
-                    <label class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Price Details</label>
+                    <label class="text-xs font-medium text-gray-400 mb-1">Price Details</label>
 
                     <section class="flex justify-between text-gray-600 text-xs">
                         <span>Grand Total</span>
@@ -362,7 +454,7 @@
                 <button type="button" class="closeAddRecordBtn w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2.5 rounded-lg text-sm transition-colors">
                     Cancel
                 </button>
-                <button type="submit" class="w-2/3 bg-[#2d3e50] hover:bg-[#1e2a38] text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
+                <button type="submit" class="w-2/3 bg-primary hover:bg-secondary text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
                     Save Record
                 </button>
             </section>

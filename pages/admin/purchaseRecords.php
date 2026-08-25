@@ -40,6 +40,102 @@
         <p>Back to top</p>
     </button>
 
+    <!-- Filter Panel -->
+    <aside id="poFilterPanel" class="hidden fixed z-60 flex items-end justify-end bg-gray-600/40 w-full h-dvh">
+        <!-- Panel Content -->
+        <section class="relative z-10 w-full h-[80dvh] bg-white shadow-2xl flex flex-col justify-between font-display lg:h-dvh lg:w-[40%] xl:w-[25%]">
+            <!-- Header -->
+            <section class="p-5 border-b flex items-center justify-between bg-gray-50/50">
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900">Filter</h2>
+                </section>
+                <button type="button" class="closeFilterBtn text-gray-400 hover:text-gray-600 transition-colors p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </section>
+
+            <!-- Form Scroll Area -->
+            <section class="p-5 overflow-y-auto flex-1 flex flex-col gap-5 text-sm scrollbar-none">
+
+                <!-- Category 1: Supplier Dropdown -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400">Supplier</label>
+                    <section>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Select Supplier</label>
+                        <select class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-xs text-gray-700 focus:ring-2 focus:ring-secondary focus:outline-none">
+                            <option value="">All Suppliers</option>
+                            <option value="unilab">Unilab Pharmaceuticals</option>
+                            <option value="zuellig">Zuellig Pharma</option>
+                            <option value="pascual">Pascual Laboratories</option>
+                            <option value="pfizer">Pfizer Philippines</option>
+                            <option value="mylan">Mylan Healthcare</option>
+                        </select>
+                    </section>
+                </section>
+
+                <hr class="border-gray-100">
+
+                <!-- Category 2: Order Date Range Section -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400">Order Date</label>
+
+                    <section class="grid grid-cols-2 gap-3">
+                        <!-- From Date Input -->
+                        <section>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">From</label>
+                            <input type="date" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-xs text-gray-700 focus:ring-2 focus:ring-secondary focus:outline-none" />
+                        </section>
+
+                        <!-- To Date Input -->
+                        <section>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">To</label>
+                            <input type="date" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-xs text-gray-700 focus:ring-2 focus:ring-secondary focus:outline-none" />
+                        </section>
+                    </section>
+                </section>
+
+                <hr class="border-gray-100">
+
+                <!-- Category 3: Fulfillment Status -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400">Fulfillment Status</label>
+
+                    <section class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="fulfillment_status" value="unfulfilled" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Unfulfilled / Draft</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="fulfillment_status" value="partially_fulfilled" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Partially Received</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="fulfillment_status" value="fulfilled" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Fully Received</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="fulfillment_status" value="cancelled" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Cancelled</span>
+                        </label>
+                    </section>
+                </section>
+
+            </section>
+
+            <!-- Footer Action Buttons -->
+            <section class="p-4 border-t bg-white flex items-center gap-3">
+                <button type="reset" class="w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2.5 rounded-lg text-sm transition-colors">
+                    Reset
+                </button>
+                <button type="button" class="w-2/3 bg-[#2d3e50] hover:bg-[#1e2a38] text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
+                    Apply Filters
+                </button>
+            </section>
+        </section>
+    </aside>
+
     <!-- Detail View Panel -->
     <aside id="viewDetailPanel" class="hidden fixed bottom-0 right-0 z-60 bg-gray-900/40 w-dvw h-dvh border-l flex flex-col justify-end font-display transition duration-200 lg:flex-row">
         <!-- Main Content Wrapper -->
@@ -49,7 +145,7 @@
                 <!-- Header & Close Button -->
                 <section class="flex items-start justify-between pb-2 w-full border-b border-gray-100">
                     <div>
-                        <span class="text-xs font-semibold text-secondary uppercase tracking-wider">Purchase Order</span>
+                        <span class="text-xs medium-semibold text-secondary">Purchase Order</span>
                         <h2 class="text-xl font-bold text-gray-900 leading-tight mt-0.5">PO-2026-089</h2>
                     </div>
                     <button class="closeViewDetailPanelBtn text-gray-400 transition-colors cursor-pointer hover:text-gray-600 p-1">
@@ -62,13 +158,13 @@
                 <!-- Order Status & Supplier Summary Card -->
                 <section class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col gap-2 w-full">
                     <section class="flex items-center justify-between">
-                        <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Fulfillment Status</span>
+                        <span class="text-xs font-medium text-gray-500">Fulfillment Status</span>
                         <span class="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                             Completed
                         </span>
                     </section>
                     <section class="flex flex-col gap-0.5 mt-1">
-                        <span class="text-xs text-gray-400 font-medium uppercase tracking-wider">Supplier</span>
+                        <span class="text-xs text-medium-400 font-medium">Supplier</span>
                         <span class="text-xl font-extrabold text-gray-900">VIP Pharma Supplies</span>
                     </section>
                     <p class="text-xs text-gray-500 mt-1 flex items-center gap-1">
@@ -80,7 +176,7 @@
                 <!-- Purchased Items List -->
                 <section class="flex flex-col gap-3 w-full">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Ordered Items</h3>
+                        <h3 class="text-xs font-medium text-gray-400">Ordered Items</h3>
                         <span class="text-xs text-gray-500 font-medium">3 Items</span>
                     </div>
 
@@ -160,8 +256,6 @@
             </section>
         </section>
     </aside>
-
-
 
     <!-- Main Content -->
     <main class="w-full h-fit min-h-full grid grid-cols-1 divide-x divide-primary/20 lg:grid-cols-[7dvw_auto] xl:lg:grid-cols-[15dvw_auto] 3xl:grid-cols-[400px_auto]">

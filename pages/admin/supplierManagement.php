@@ -30,6 +30,7 @@
 </head>
 
 <body class="relative w-full h-dvh bg-white text-dark-blue text-sm font-display">
+
     <!-- Back to top button -->
     <button id="backToTopBtn" class="fixed bg-secondary z-20 bottom-10 right-10 text-sm text-white flex gap-2 items-center justify-center px-4 py-3 pr-5 rounded-md cursor-pointer">
         <svg class="lucide lucide-arrow-up-from-dot-icon lucide-arrow-up-from-dot size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -40,17 +41,70 @@
         <p>Back to top</p>
     </button>
 
+    <!-- Filter -->
+    <aside id="inventoryFilterPanel" class="hidden fixed z-60 flex items-end justify-end bg-gray-600/40 w-full h-dvh">
+        <!-- Panel Content -->
+        <section class="relative z-10 w-full h-[80dvh] bg-white shadow-2xl flex flex-col justify-between font-display lg:h-dvh lg:w-[40%] xl:w-[25%]">
+            <!-- Header -->
+            <section class="p-5 border-b flex items-center justify-between bg-gray-50/50">
+                <section>
+                    <h2 class="text-lg font-bold text-gray-900">Filter</h2>
+                </section>
+                <button type="button" class="closeFilterBtn text-gray-400 hover:text-gray-600 transition-colors p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </section>
+
+            <!-- Form Scroll Area -->
+            <section class="p-5 overflow-y-auto flex-1 flex flex-col gap-5 text-sm scrollbar-none">
+                <hr class="border-gray-100">
+
+                <!-- Category 1: Stock Status -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400">Stock Status</label>
+
+                    <section class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="stock_status" value="in_stock" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Active</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="stock_status" value="low_stock" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Inactive</span>
+                        </label>
+                    </section>
+                </section>
+            </section>
+
+            <!-- Footer Action Buttons -->
+            <section class="p-4 border-t bg-white flex items-center gap-3">
+                <button type="reset" class="w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2.5 rounded-lg text-sm transition-colors">
+                    Reset
+                </button>
+                <button type="button" class="w-2/3 bg-[#2d3e50] hover:bg-[#1e2a38] text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
+                    Apply Filters
+                </button>
+            </section>
+        </section>
+    </aside>
+
     <!-- Supplier Detail View Panel -->
     <aside id="viewDetailPanel" class="hidden fixed top-0 right-0 z-60 bg-gray-900/40 w-dvw h-dvh border-l flex flex-col justify-end font-display transition duration-200 lg:flex-row">
         <!-- Main Content Wrapper -->
-        <section class="w-full h-full flex flex-col bg-white p-6 justify-between lg:h-dvh lg:w-[40%] xl:w-[25%] overflow-y-auto scrollbar-none">
+        <section class="w-full h-[80%] flex flex-col bg-white p-6 justify-between lg:h-dvh lg:w-[40%] xl:w-[25%] overflow-y-auto scrollbar-none">
 
             <section class="flex flex-col w-full gap-6 items-start justify-between">
                 <!-- Header & Close Button -->
                 <section class="flex items-start justify-between pb-2 w-full border-b border-gray-100">
                     <div>
-                        <span class="text-xs 1font-semibold text-secondary uppercase tracking-wider">Supplier ID: #2</span>
-                        <h2 class="text-xl font-bold text-gray-900 leading-tight mt-0.5">VIP Pharma Supplies</h2>
+                        <span class="text-xs mediumt-semibold text-secondary">Supplier ID: #2</span>
+                        <section class="flex items-center gap-3">
+                            <h2 class="text-xl font-bold text-gray-900 leading-tight mt-0.5" contenteditable="false">VIP Pharma Supplies</h2>
+                            <p class="px-3 py-1 text-xs rounded-full bg-green-100 text-green-700 border border-green-500 text-green-700">Active</p>
+                            <p class="px-3 py-1 text-xs rounded-full border border-red-500 bg-red-200 text-red-700">Inactive</p>
+                        </section>
                     </div>
                     <button class="closeViewDetailPanelBtn text-gray-400 transition-colors cursor-pointer hover:text-gray-600 p-1">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,7 +116,7 @@
                 <!-- Supplier Summary Card -->
                 <section class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col gap-2 w-full">
                     <section class="flex items-center justify-between">
-                        <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Total Transactions</span>
+                        <span class="text-xs font-medium text-gray-500">Total Transactions</span>
                         <span class="bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                             24 Orders
                         </span>
@@ -74,7 +128,7 @@
 
                 <!-- Supplier Contact Details Section -->
                 <section class="flex flex-col gap-4 w-full">
-                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Contact Information</h3>
+                    <h3 class="text-xs font-medium text-gray-400">Contact Information</h3>
 
                     <!-- Address -->
                     <div class="flex items-start gap-3 bg-gray-50 p-3 rounded-xl border border-gray-100">
@@ -121,7 +175,7 @@
                 <!-- Recent Orders Associated with Supplier -->
                 <section class="flex flex-col gap-3 w-full">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Recent Purchase Orders</h3>
+                        <h3 class="text-xs font-medium text-gray-400">Recent Purchase Orders</h3>
                         <span class="text-xs text-gray-500 font-medium">Latest 3</span>
                     </div>
 
@@ -175,6 +229,9 @@
                     <button class="w-full bg-gray-100 text-red-700 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
                         Delete
                     </button>
+                    <button class="w-full bg-green-100 text-green-700 border border-green-500 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
+                        Set as Active
+                    </button>
                 </section>
             </section>
         </section>
@@ -201,7 +258,7 @@
             <!-- Form Fields Scroll Area -->
             <form id="addSupplierForm" class="p-5 overflow-y-auto flex-1 flex flex-col gap-4 text-sm scrollbar-none">
 
-                <label class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Supplier Credentials</label>
+                <label class="text-xs font-medium text-gray-400 mb-1">Supplier Credentials</label>
 
                 <!-- Supplier Name Input -->
                 <section>

@@ -31,7 +31,7 @@
 
 <body class="relative w-full h-dvh bg-white text-dark-blue text-sm font-display">
     <!-- Back to top button -->
-    <button id="backToTopBtn" class="fixed bg-secondary z-20 bottom-10 right-10 text-sm text-white flex gap-2 items-center justify-center px-4 py-3 pr-5 rounded-md cursor-pointer">
+    <button id="backToTopBtn" class="hidden fixed bg-secondary z-20 bottom-10 right-10 text-sm text-white flex gap-2 items-center justify-center px-4 py-3 pr-5 rounded-md cursor-pointer">
         <svg class="lucide lucide-arrow-up-from-dot-icon lucide-arrow-up-from-dot size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="m5 9 7-7 7 7" />
             <path d="M12 16V2" />
@@ -39,6 +39,120 @@
         </svg>
         <p>Back to top</p>
     </button>
+
+    <!-- Filter Side Panel -->
+    <aside id="filterPanel" class="hidden fixed z-60 flex items-end justify-end bg-gray-600/40 w-full h-dvh">
+        <!-- Panel Content -->
+        <section class="relative z-10 w-full h-[80dvh] bg-white shadow-2xl flex flex-col justify-between font-display lg:h-dvh lg:w-[40%] xl:w-[25%]">
+            <!-- Header -->
+            <section class="p-5 border-b flex items-center justify-between bg-gray-50/50">
+                <section>
+                    <h2 class="text-lg font-medium text-gray-900">Filter Records</h2>
+                </section>
+                <button type="button" class="closeFilterBtn text-gray-400 hover:text-gray-600 transition-colors p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </section>
+
+            <!-- Form Scroll Area -->
+            <section class="p-5 overflow-y-auto flex-1 flex flex-col gap-5 text-sm scrollbar-none">
+
+                <!-- Date Range Section -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400 tracking-wider">Date Range</label>
+
+                    <section class="grid grid-cols-2 gap-3">
+                        <!-- From Date Input -->
+                        <section>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">From</label>
+                            <input type="date" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-xs text-gray-700 focus:ring-2 focus:ring-secondary focus:outline-none" />
+                        </section>
+
+                        <!-- To Date Input -->
+                        <section>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">To</label>
+                            <input type="date" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-xs text-gray-700 focus:ring-2 focus:ring-secondary focus:outline-none" />
+                        </section>
+                    </section>
+                </section>
+
+                <hr class="border-gray-100">
+
+                <!-- Category 1: Order Status -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400 tracking-wider">Order Status</label>
+
+                    <section class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="status" value="completed" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Completed</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="status" value="pending" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Pending</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="status" value="cancelled" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Cancelled</span>
+                        </label>
+                    </section>
+                </section>
+
+                <!-- Category 2: Payment Method -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-medium text-gray-400 tracking-wider">Payment Method</label>
+
+                    <section class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="payment_method" value="cash" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Cash</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="payment_method" value="gcash" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>GCash / E-Wallet</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="payment_method" value="card" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Credit / Debit Card</span>
+                        </label>
+                    </section>
+                </section>
+
+                <!-- Category 3: Customer Category -->
+                <section class="flex flex-col gap-3">
+                    <label class="text-xs font-bold text-gray-400 tracking-wider">Customer Type</label>
+
+                    <section class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="customer_type" value="walk_in" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Walk-in Customer</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="customer_type" value="regular" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Regular Patient</span>
+                        </label>
+                        <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-gray-700 hover:text-gray-900">
+                            <input type="checkbox" name="customer_type" value="senior" class="rounded border-gray-300 text-secondary focus:ring-secondary w-4 h-4" />
+                            <span>Senior Citizen / PWD</span>
+                        </label>
+                    </section>
+                </section>
+
+            </section>
+
+            <!-- Footer Action Buttons -->
+            <section class="p-4 border-t bg-white flex items-center gap-3">
+                <button type="reset" class="w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2.5 rounded-lg text-sm transition-colors">
+                    Reset
+                </button>
+                <button type="button" class="w-2/3 bg-[#2d3e50] hover:bg-[#1e2a38] text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
+                    Apply Filters
+                </button>
+            </section>
+        </section>
+    </aside>
 
     <!-- Detail View Panel -->
     <aside id="viewDetailPanel" class="hidden fixed bottom-0 right-0 z-60 bg-gray-900/40 w-dvw h-dvh border-l flex flex-col justify-end font-display transition duration-200 lg:flex-row">
@@ -49,7 +163,7 @@
                 <!-- Header & Close Button -->
                 <section class="flex items-start justify-between pb-2 w-full border-b border-gray-100">
                     <div>
-                        <span class="text-xs font-semibold text-secondary uppercase tracking-wider">Purchase Order</span>
+                        <span class="text-xs font-semibold text-secondary tracking-wider">Purchase Order</span>
                         <h2 class="text-xl font-bold text-gray-900 leading-tight mt-0.5">PO-2026-089</h2>
                     </div>
                     <button class="closeViewDetailPanelBtn text-gray-400 transition-colors cursor-pointer hover:text-gray-600 p-1">
@@ -62,13 +176,13 @@
                 <!-- Order Status & Supplier Summary Card -->
                 <section class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col gap-2 w-full">
                     <section class="flex items-center justify-between">
-                        <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Fulfillment Status</span>
+                        <span class="text-xs font-medium text-gray-500 tracking-wider">Fulfillment Status</span>
                         <span class="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                             Completed
                         </span>
                     </section>
                     <section class="flex flex-col gap-0.5 mt-1">
-                        <span class="text-xs text-gray-400 font-medium uppercase tracking-wider">Supplier</span>
+                        <span class="text-xs text-gray-400 font-medium tracking-wider">Supplier</span>
                         <span class="text-xl font-extrabold text-gray-900">VIP Pharma Supplies</span>
                     </section>
                     <p class="text-xs text-gray-500 mt-1 flex items-center gap-1">
@@ -80,7 +194,7 @@
                 <!-- Purchased Items List -->
                 <section class="flex flex-col gap-3 w-full">
                     <section class="flex items-center justify-between">
-                        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Ordered Items</h3>
+                        <h3 class="text-xs font-bold text-gray-400 tracking-wider">Ordered Items</h3>
                         <span class="text-xs text-gray-500 font-medium">3 Items</span>
                     </section>
 
@@ -136,7 +250,7 @@
 
                 <!-- Order Lifecycle Timeline -->
                 <section class="flex flex-col gap-3 w-full">
-                    <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider">Order Progress</h3>
+                    <h3 class="text-xs font-bold text-gray-400 tracking-wider">Order Progress</h3>
 
                     <section class="relative pl-6 space-y-4 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-emerald-500">
                         <!-- Creation Date -->
@@ -195,19 +309,13 @@
 
             <!-- Quick Action Footer -->
             <section class="pt-4 mt-6 border-t border-gray-100 flex gap-2">
-                <button class="w-full bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
-                    Edit
-                </button>
-                <button class="w-full bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
+                <button class="w-full text-red-700 hover:bg-red-100 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
                     Delete
                 </button>
-                <button class="w-full bg-gray-50 border border-gray-200 text-gray-700 hover:bg-gray-100 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
-                    Save as Draft
+                <button class="w-full border border-gray-800 text-gray-700 hover:bg-gray-100 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
+                    Re-Order
                 </button>
-                <button class="w-full bg-primary text-white hover:bg-primary/90 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
-                    Place Order
-                </button>
-                <button class="w-full bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
+                <button class="w-full border border-gray-800 text-gray-700 hover:bg-gray-100 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
                     Cancel Order
                 </button>
             </section>
@@ -236,7 +344,7 @@
 
                 <!-- Brand Selection & Item Entry Section -->
                 <section class="flex flex-col gap-3">
-                    <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Item Details</label>
+                    <label class="text-xs font-bold text-gray-400 tracking-wider">Item Details</label>
 
                     <!-- Search Medicine Input -->
                     <section class="relative">
@@ -246,6 +354,14 @@
                             <svg class="w-4 h-4 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
+                        </section>
+
+                        <section class="absolute bg-gray-50 w-full max-w-full h-fit max-h-50 flex flex-col gap-5 overflow-y-auto scrollbar-thin scrollbar-thumb-secondary p-3 rounded-lg mt-1 shadow-md">
+                            <p class="p-3 cursor-pointer rounded-sm hover:bg-gray-200">Medicine 1</p>
+                            <p class="p-3 cursor-pointer rounded-sm hover:bg-gray-200">Medicine 2</p>
+                            <p class="p-3 cursor-pointer rounded-sm hover:bg-gray-200">Medicine 3</p>
+                            <p class="p-3 cursor-pointer rounded-sm hover:bg-gray-200">Medicine 4</p>
+                            <p class="p-3 cursor-pointer rounded-sm hover:bg-gray-200">Medicine 5</p>
                         </section>
                     </section>
 
@@ -289,7 +405,7 @@
                 <!-- Added Items List (Cart) Section -->
                 <section class="flex flex-col gap-3">
                     <section class="flex items-center justify-between">
-                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Added Items</label>
+                        <label class="text-xs font-bold text-gray-400 tracking-wider">Added Items</label>
                         <span class="text-xs font-semibold text-secondary bg-blue-50 px-2 py-0.5 rounded-full">2 Items</span>
                     </section>
 
@@ -342,7 +458,7 @@
 
                 <!-- Order Total Price Only -->
                 <section class="bg-gray-50 p-4 rounded-xl border border-gray-200 flex items-center justify-between">
-                    <label class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Price</label>
+                    <label class="text-xs font-bold text-gray-400 tracking-wider">Total Price</label>
                     <span class="text-lg font-bold text-emerald-600">₱105.00</span>
                 </section>
 
@@ -353,8 +469,11 @@
                 <button type="button" class="closeAddRecordBtn w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2.5 rounded-lg text-sm transition-colors">
                     Cancel
                 </button>
-                <button type="submit" class="w-2/3 bg-[#2d3e50] hover:bg-[#1e2a38] text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
-                    Save Order
+                <button type="submit" class="w-2/3 bg-white border border-2 border-primary text-black font-medium py-2.5 rounded-lg text-sm transition-colors cursor-pointer hover:bg-secondary/80 hover:text-white">
+                    Save as Draft
+                </button>
+                <button type="submit" class="w-2/3 bg-primary hover:bg-secondary text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
+                    Place Order
                 </button>
             </section>
         </section>
@@ -537,7 +656,7 @@
                     <input class="outline-0 text-sm" type="text" name="medicineSearchQuery" id="medicineSearchQueryTxt">
                 </section>
 
-                <button class="bg-primary px-4 py-2 rounded-md text-white cursor-pointer flex items-center gap-1">
+                <button class="bg-primary px-4 py-2 rounded-md text-white cursor-pointer w-full flex justify-center lg:w-fit items-center gap-1">
                     <svg class="lucide lucide-plus-icon lucide-plus size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14" />
                         <path d="M12 5v14" />
