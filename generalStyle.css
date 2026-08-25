@@ -1,0 +1,123 @@
+:root {
+  /* Custom Fonts */
+  --font-display: "Plus Jakarta Sans", sans-serif;
+
+  /* Custom Colors */
+  --color-primary: #3e5c76;
+  --color-secondary: #748cab;
+  --color-accent: #f0ebd8;
+  --color-primary-dark: #1d2d44;
+
+  --color-dark-blue: #0d1321;
+  --color-white: #f2f2f2;
+  --color-black: #202020;
+
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 150rem;
+}
+
+* {
+  box-sizing: border-box;
+  transition-duration: 0.1s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Thin Weight (100) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/Plus_Jakarta/static/PlusJakartaSans-Thin.ttf")
+    format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* ExtraLight Weight (200) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/Plus_Jakarta/static/PlusJakartaSans-ExtraLight.ttf")
+    format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* Light Weight (300) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/Plus_Jakarta/static/PlusJakartaSans-Light.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Regular Weight (400) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/Plus_Jakarta/static/PlusJakartaSans-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Medium Weight (500) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/Plus_Jakarta/static/PlusJakartaSans-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* SemiBold Weight (600) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/Plus_Jakarta/static/PlusJakartaSans-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Bold Weight (700) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/Plus_Jakarta/static/PlusJakartaSans-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ExtraBold Weight (800) */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("./assets/fonts/Plus_Jakarta/static/PlusJakartaSans-ExtraBold.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@media screen and (min-width: 425px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 150rem) {
+  html {
+    font-size: 24px;
+  }
+}
+
+input[type="checkbox"]:checked {
+  accent-color: var(
+    --color-secondary
+  ); /* Changes the background color when checked */
+}
