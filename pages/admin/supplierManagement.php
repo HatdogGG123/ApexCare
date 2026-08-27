@@ -50,7 +50,7 @@
                 <section>
                     <h2 class="text-lg font-bold text-gray-900">Filter</h2>
                 </section>
-                <button type="button" class="closeFilterBtn text-gray-400 hover:text-gray-600 transition-colors p-1">
+                <button type="button" class="closeFilterBtn text-gray-400 hover:text-gray-600 transition-colors p-1" onclick="hideFilterSidePanel()">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -106,7 +106,7 @@
                             <p class="px-3 py-1 text-xs rounded-full border border-red-500 bg-red-200 text-red-700">Inactive</p>
                         </section>
                     </div>
-                    <button class="closeViewDetailPanelBtn text-gray-400 transition-colors cursor-pointer hover:text-gray-600 p-1">
+                    <button class="closeViewDetailPanelBtn text-gray-400 transition-colors cursor-pointer hover:text-gray-600 p-1" onclick="hideDetailViewPanel()">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
@@ -247,7 +247,7 @@
                 <section>
                     <h2 class="text-lg font-bold text-gray-900">Add New Supplier</h2>
                 </section>
-                <button type="button" class="closeAddSupplierBtn text-gray-400 hover:text-gray-600 transition-colors p-1 cursor-pointer">
+                <button type="button" class="closeAddSupplierBtn text-gray-400 hover:text-gray-600 transition-colors p-1 cursor-pointer" onclick="hideAddSupplierPanel()">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -500,14 +500,14 @@
                         </svg>
                         <input class="outline-0 text-sm w-full " type="text" name="medicineSearchQuery" id="medicineSearchQueryTxt">
                     </section>
-                    <button class="bg-primary text-white size-9 p-2 rounded-md flex items-center justify-center cursor-pointer hover:bg-primary/90">
+                    <button class="bg-primary text-white size-9 p-2 rounded-md flex items-center justify-center cursor-pointer hover:bg-primary/90" onclick="showFilterSidePanel()">
                         <svg class="lucide lucide-funnel-icon lucide-funnel size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
                         </svg>
                     </button>
                 </section>
 
-                <button class="bg-primary px-4 py-2 pr-5 rounded-md text-white cursor-pointer flex items-center justify-center gap-1 w-full sm:w-80 md:w-100">
+                <button class="bg-primary px-4 py-2 pr-5 rounded-md text-white cursor-pointer flex items-center justify-center gap-1 w-full sm:w-80 md:w-100" onclick="showAddSupplierPanel()">
                     <svg class="lucide lucide-plus-icon lucide-plus size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14" />
                         <path d="M12 5v14" />
@@ -555,7 +555,7 @@
                                     </span>
                                 </td>
                                 <td class="max-w-[0] truncate py-4 pl-5 pr-5">
-                                    <button class="viewDetailBtn bg-primary hover:bg-primary/90 text-white rounded-md flex items-center gap-1 px-3 py-2 cursor-pointer transition-colors text-xs font-medium">
+                                    <button class="viewDetailBtn bg-primary hover:bg-primary/90 text-white rounded-md flex items-center gap-1 px-3 py-2 cursor-pointer transition-colors text-xs font-medium" onclick="showDetailViewPanel()">
                                         <svg class="lucide lucide-eye size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
                                             <circle cx="12" cy="12" r="3" />
@@ -623,6 +623,30 @@
                     }
                 }, 5000);
             })
+        }
+
+        function showFilterSidePanel() {
+            $("#inventoryFilterPanel").show();
+        }
+
+        function hideFilterSidePanel() {
+            $("#inventoryFilterPanel").hide();
+        }
+
+        function showAddSupplierPanel() {
+            $("#addSupplierPanel").show();
+        }
+
+        function hideAddSupplierPanel() {
+            $("#addSupplierPanel").hide();
+        }
+
+        function showDetailViewPanel() {
+            $("#viewDetailPanel").show();
+        }
+
+        function hideDetailViewPanel() {
+            $("#viewDetailPanel").hide();
         }
     </script>
 </body>
