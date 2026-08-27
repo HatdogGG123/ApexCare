@@ -1,3 +1,65 @@
+<?php
+
+$conn = new mysqli("localhost", "root", "@Password123", "pharmacy_db");
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['user_email'] ?? '';
+    $password = $_POST['user_password'] ?? '';
+
+    if (empty($email) || empty($password)) {
+        echo json_encode(["status" => "error", "message" => "Please fill in all fields."]);
+        exit;
+    }
+
+    // 1. Prepare SQL statement matching both email and plain text password
+    $sql = "SELECT user_id, role_id FROM user_table WHERE email = ? AND hash_password = ? LIMIT 1";
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt) {
+        // 2. Bind string parameters ('ss' for two strings: email and password)
+        $stmt->bind_param("ss", $email, $password);
+        $stmt->execute();
+
+        // 3. Get query results
+        $result = $stmt->get_result();
+
+        if ($row = $result->fetch_assoc()) {
+            // Start user session
+            session_start();
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['role_id'] = $row['role_id'];
+
+            echo json_encode(["status" => "success", "message" => "Login successful!"]);
+
+            switch ($row['role_id']) {
+                case 1:
+                    header("Location: pages/admin/dashboard.php");
+                    break;
+                case 3:
+                    header("Location: pages/inventoryStaff/deliveryManagement.php");
+                    break;
+                case 4:
+                    header("Location: pages/cashier/posTerminal.php");
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+        } else {
+            echo json_encode(["status" => "error", "message" => "Invalid email or password."]);
+        }
+
+        $stmt->close();
+    } else {
+        echo json_encode(["status" => "error", "message" => "Database query failed."]);
+    }
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +91,7 @@
     <title>ApexCare Login</title>
 </head>
 
-<body class="w-full h-dvh text-sm font-display text-black lg:pt-10">
+<body class="w-full h-dvh text-sm font-display text-black pt-5   lg:pt-10">
     <!-- Login Page -->
     <main class="w-full h-full flex justify-center items-start">
         <!-- Login Attempt Toast -->
@@ -51,7 +113,7 @@
         </section>
 
         <!-- Login Form -->
-        <form action="" method="" class="rounded-xl w-full h-fit p-5 flex flex-col gap-10 text-center sm:w-100 md:w-120">
+        <form action="" method="POST" id="loginForm" class="rounded-xl w-full h-fit p-5 flex flex-col gap-10 text-center sm:w-100 md:w-120">
             <section class="flex flex-col gap-8 w-full h-fit justify-center items-center">
                 <section class="flex items-center gap-3">
                     <p class="size-14 bg-primary text-white font-semibold rounded-lg text-2xl p-2 flex items-center justify-center">AC</p>
@@ -71,7 +133,7 @@
                             <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
                             <rect x="2" y="4" width="20" height="16" rx="2" />
                         </svg>
-                        <input type="email" name="" id="" required placeholder="exampleemail@gmail.com" class="w-full outline-none">
+                        <input type="email" name="user_email" id="" required placeholder="exampleemail@gmail.com" class="w-full outline-none">
                     </section>
                     <section class="flex items-center gap-1 text-red-500">
                         <svg class="lucide lucide-info-icon lucide-info size-3.5 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -79,7 +141,7 @@
                             <path d="M12 16v-4" />
                             <path d="M12 8h.01" />
                         </svg>
-                        <p class="text-xs md:text-md">Error Message</p>
+                        <p class="text-xs md:text-md" id="userEmailErrorMsg">Error Message</p>
                     </section>
                 </section>
                 <section class="w-full h-fit flex flex-col gap-2 items-start">
@@ -90,7 +152,7 @@
                             <path d="m21 2-9.6 9.6" />
                             <circle cx="7.5" cy="15.5" r="5.5" />
                         </svg>
-                        <input type="password" name="" id="" required class="w-full outline-none">
+                        <input type="password" name="user_password" id="" required class="w-full outline-none">
                     </section>
                     <section class="flex items-center gap-1 text-red-500">
                         <svg class="lucide lucide-info-icon lucide-info size-3.5 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -98,17 +160,19 @@
                             <path d="M12 16v-4" />
                             <path d="M12 8h.01" />
                         </svg>
-                        <p class="text-xs md:text-md">Error Message</p>
+                        <p class="text-xs md:text-md" id="userPasswordErrorMsg">Error Message</p>
                     </section>
                 </section>
             </section>
 
-            <button type="submit" class="bg-primary text-white font-medium p-3 rounded-lg cursor-pointer hover:bg-primary/90">Login</button>
+            <button type="submit" name="login_btn" id="loginBtn" class="bg-primary text-white font-medium p-3 rounded-lg cursor-pointer hover:bg-primary/90">Login</button>
         </form>
     </main>
 
     <script src="./js/jquery.min.js"></script>
 
+    <script>
+    </script>
 </body>
 
 

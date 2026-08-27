@@ -31,7 +31,7 @@
 
 <body class="relative w-full h-dvh bg-white text-dark-blue text-sm font-display">
     <!-- Back to top button -->
-    <button id="backToTopBtn" class="hidden fixed bg-secondary z-20 bottom-10 right-10 text-sm text-white flex gap-2 items-center justify-center px-4 py-3 pr-5 rounded-md cursor-pointer">
+    <button id="backToTopBtn" class="fixed bg-secondary z-20 bottom-10 right-10 text-sm text-white flex gap-2 items-center justify-center px-4 py-3 pr-5 rounded-md cursor-pointer">
         <svg class="lucide lucide-arrow-up-from-dot-icon lucide-arrow-up-from-dot size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="m5 9 7-7 7 7" />
             <path d="M12 16V2" />
@@ -356,7 +356,7 @@
                             </svg>
                         </section>
 
-                        <section class="absolute bg-gray-50 w-full max-w-full h-fit max-h-50 flex flex-col gap-5 overflow-y-auto scrollbar-thin scrollbar-thumb-secondary p-3 rounded-lg mt-1 shadow-md">
+                        <section class="hidden absolute bg-gray-50 w-full max-w-full h-fit max-h-50 flex flex-col gap-5 overflow-y-auto scrollbar-thin scrollbar-thumb-secondary p-3 rounded-lg mt-1 shadow-md">
                             <p class="p-3 cursor-pointer rounded-sm hover:bg-gray-200">Medicine 1</p>
                             <p class="p-3 cursor-pointer rounded-sm hover:bg-gray-200">Medicine 2</p>
                             <p class="p-3 cursor-pointer rounded-sm hover:bg-gray-200">Medicine 3</p>
@@ -482,7 +482,7 @@
     <!-- Main Content -->
     <main class="w-full h-fit min-h-full grid grid-cols-1 divide-x divide-primary/20 lg:grid-cols-[7dvw_auto] xl:lg:grid-cols-[15dvw_auto] 3xl:grid-cols-[400px_auto]">
         <!-- Sidebar -->
-        <aside id="sidebar" class="hidden absolute z-50 w-full h-fit bg-secondary text-white p-5 flex flex-col gap-3 divide-y divide-primary/20 lg:block lg:static lg:h-full lg:bg-white lg:text-dark-blue">
+        <aside id="sidebar" class="hidden absolute z-50 w-full h-fit bg-secondary text-white p-5 flex flex-col gap-3 divide-y divide-primary/20 lg:block lg:static lg:h-dvh lg:bg-white lg:text-dark-blue overflow-y-scroll scrollbar-none">
             <!-- Logo Container -->
             <section class="flex items-center justify-between lg:justify-center xl:justify-between">
                 <a href=" " class="py-3 flex items-center lg:justify-center 2xl:justify-start gap-2">
@@ -510,8 +510,8 @@
                     </section>
                 </section>
 
-                <section class="w-full mt-10 text-center">
-                    <button class="border border-primary rounded-md text-center flex items-center justify-center gap-2 cursor-pointer w-full lg:w-fit h-fit px-3 py-2 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                <section class="w-full mt-10 text-center w-full">
+                    <button class="border border-primary rounded-md text-center flex items-center justify-center gap-2 cursor-pointer w-full lg:w-fit xl:w-full h-fit px-3 py-2 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-log-out-icon lucide-log-out size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m16 17 5-5-5-5" />
                             <path d="M21 12H9" />
@@ -524,9 +524,9 @@
 
             <!-- Sidebar Menu List -->
             <section class="divide-y divide-primary/20 flex flex-col gap-4 ">
-                <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
+                <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start" title="Dashboard">
                     <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Overview</p>
-                    <a href="../admin/dashboard.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                    <a href="../admin/dashboard.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="7" height="9" x="3" y="3" rx="1" />
                             <rect width="7" height="5" x="14" y="3" rx="1" />
@@ -627,7 +627,7 @@
         </aside>
 
         <!-- Main Content -->
-        <section class="w-full h-full p-5 grid grid-cols-1 gap-8  md:grid-cols-2 lg:grid-cols-4 lg:gap-3 lg:grid-rows-[auto_auto_12fr]">
+        <section class="w-full h-dvh p-5 grid grid-cols-1 gap-8  md:grid-cols-2 lg:grid-cols-4 lg:gap-3 lg:grid-rows-[auto_auto_12fr] overflow-y-scroll scrollbar-thin scrollbar-thumb-sendary">
             <!-- Header -->
             <section class="col-span-full flex items-center justify-between">
                 <section class="flex items-center gap-3">
@@ -647,16 +647,23 @@
             </section>
 
             <!-- Search, Filter & Add sales button -->
-            <section class="col-span-full flex gap-2 items-center justify-between flex-col lg:flex-row">
-                <section class="border border-primary flex items-center gap-2 p-2 pr-3 rounded-md w-full h-fit lg:w-100">
-                    <svg class="lucide lucide-search-icon lucide-search size-4.5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m21 21-4.34-4.34" />
-                        <circle cx="11" cy="11" r="8" />
-                    </svg>
-                    <input class="outline-0 text-sm" type="text" name="medicineSearchQuery" id="medicineSearchQueryTxt">
+            <section class="col-span-full flex gap-2 items-center justify-between flex-col sm:flex-row">
+                <section class="flex items-center gap-2 h-fit w-full">
+                    <section class="border border-primary flex items-center gap-2 p-2 pr-3 rounded-md w-full h-fit sm:w-80 md:w-100">
+                        <svg class="lucide lucide-search-icon lucide-search size-4.5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m21 21-4.34-4.34" />
+                            <circle cx="11" cy="11" r="8" />
+                        </svg>
+                        <input class="outline-0 text-sm w-full " type="text" name="medicineSearchQuery" id="medicineSearchQueryTxt">
+                    </section>
+                    <button class="bg-primary text-white size-9 p-2 rounded-md flex items-center justify-center cursor-pointer hover:bg-primary/90">
+                        <svg class="lucide lucide-funnel-icon lucide-funnel size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+                        </svg>
+                    </button>
                 </section>
 
-                <button class="bg-primary px-4 py-2 rounded-md text-white cursor-pointer w-full flex justify-center lg:w-fit items-center gap-1">
+                <button class="bg-primary px-4 py-2 pr-5 rounded-md text-white cursor-pointer flex items-center justify-center gap-1 w-full sm:w-80 md:w-100">
                     <svg class="lucide lucide-plus-icon lucide-plus size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14" />
                         <path d="M12 5v14" />

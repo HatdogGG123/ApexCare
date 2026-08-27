@@ -33,7 +33,7 @@
     <!-- Main Content -->
     <main class="w-full h-fit min-h-full grid grid-cols-1 divide-x divide-primary/20 lg:grid-cols-[7dvw_auto] xl:lg:grid-cols-[15dvw_auto] 3xl:grid-cols-[400px_auto]">
         <!-- Sidebar -->
-        <aside id="sidebar" class="hidden absolute z-50 w-full h-fit bg-secondary text-white p-5 flex flex-col gap-3 divide-y divide-primary/20 lg:block lg:static lg:h-full lg:bg-white lg:text-dark-blue">
+        <aside id="sidebar" class="hidden absolute z-50 w-full h-fit bg-secondary text-white p-5 flex flex-col gap-3 divide-y divide-primary/20 lg:block lg:static lg:h-dvh lg:bg-white lg:text-dark-blue overflow-y-scroll scrollbar-none">
             <!-- Logo Container -->
             <section class="flex items-center justify-between lg:justify-center xl:justify-between">
                 <a href=" " class="py-3 flex items-center lg:justify-center 2xl:justify-start gap-2">
@@ -62,7 +62,7 @@
                 </section>
 
                 <section class="w-full mt-10 text-center">
-                    <button class="border border-primary rounded-md text-center flex items-center justify-center gap-2 cursor-pointer w-full lg:w-fit h-fit px-3 py-2 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                    <button class="border border-primary rounded-md text-center flex items-center justify-center gap-2 cursor-pointer w-full lg:w-fit xl:w-full h-fit px-3 py-2 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-log-out-icon lucide-log-out size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m16 17 5-5-5-5" />
                             <path d="M21 12H9" />
@@ -75,9 +75,9 @@
 
             <!-- Sidebar Menu List -->
             <section class="divide-y divide-primary/20 flex flex-col gap-4 ">
-                <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
+                <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start" title="Dashboard">
                     <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Overview</p>
-                    <a href="../admin/dashboard.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                    <a href="../admin/dashboard.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="7" height="9" x="3" y="3" rx="1" />
                             <rect width="7" height="5" x="14" y="3" rx="1" />
@@ -178,7 +178,7 @@
         </aside>
 
         <!-- Main Content -->
-        <section class="w-full h-full p-5 grid grid-cols-1 gap-8  md:grid-cols-2 lg:grid-cols-4 xl:gap-3 grid-rows-auto lg:grid-rows-[auto_auto_auto_auto_auto] lg:grid-rows-[auto_auto_100%_100%_100%_100%_auto]">
+        <section class="w-full h-dvh p-5 grid grid-cols-1 gap-8  md:grid-cols-2 lg:grid-cols-4 xl:gap-3 grid-rows-auto lg:grid-rows-[auto_auto_auto_auto_auto] lg:grid-rows-[auto_auto_100%_100%_100%_100%_auto] overflow-y-scroll scrollbar-thin scrollbar-thumb-sendary">
             <!-- Header -->
             <section class="col-span-full flex items-center justify-between">
                 <section class="flex items-center gap-3">
@@ -203,7 +203,23 @@
                         <p class="text-md text-gray-500">Total Sales Revenue</p>
                         <p class="text-4xl font-medium flex items-center md:text-5xl lg:text-6xl"><span class="text-2xl">+</span>₱123,102</p>
                     </section>
-                    <section class="flex items-center gap-1 text-gray-500">
+
+                    <!-- Display either one of the report -->
+                    <section class="text-xs w-fit flex items-center gap-1 px-5 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
+                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 7h6v6" />
+                            <path d="m22 7-8.5 8.5-5-5L2 17" />
+                        </svg>
+                        <p><span>12</span>% Higher than yesterday</p>
+                    </section>
+                    <section class="text-xs w-fit flex items-center gap-1 px-5 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
+                        <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 17h6v-6" />
+                            <path d="m22 17-8.5-8.5-5 5L2 7" />
+                        </svg>
+                        <p><span>12</span>% Lower than yesterday</p>
+                    </section>
+                    <section class="flex items-center gap-1 text-gray-500 mt-5">
                         <svg class="lucide lucide-arrow-left-right-icon lucide-arrow-left-right size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M8 3 4 7l4 4" />
                             <path d="M4 7h16" />
@@ -227,18 +243,61 @@
             <section class="col-span-full border border-gray-400/30 rounded-lg flex flex-col gap-1 p-3 lg:col-span-2 xl:col-span-1">
                 <p class="text-gray-500">Overall Amount Spent</p>
                 <p class="text-2xl font-medium">₱240,091.00</p>
+
+                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
+                    <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 7h6v6" />
+                        <path d="m22 7-8.5 8.5-5-5L2 17" />
+                    </svg>
+                    <p><span>12</span>% Higher than yesterday</p>
+                </section>
+                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
+                    <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 17h6v-6" />
+                        <path d="m22 17-8.5-8.5-5 5L2 7" />
+                    </svg>
+                    <p><span>12</span>% Lower than yesterday</p>
+                </section>
             </section>
 
             <!-- Total Discount Given -->
             <section class="col-span-full border border-gray-400/30 rounded-lg flex flex-col gap-1 p-3 lg:col-span-2 xl:col-span-1">
                 <p class="text-gray-500">Overall Discount Given</p>
                 <p class="text-2xl font-medium">₱10,091.00</p>
+                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
+                    <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 7h6v6" />
+                        <path d="m22 7-8.5 8.5-5-5L2 17" />
+                    </svg>
+                    <p><span>12</span>% Higher than yesterday</p>
+                </section>
+                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
+                    <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 17h6v-6" />
+                        <path d="m22 17-8.5-8.5-5 5L2 7" />
+                    </svg>
+                    <p><span>12</span>% Lower than yesterday</p>
+                </section>
             </section>
 
             <!-- Total Profit Gained -->
             <section class="col-span-full border border-gray-400/30 rounded-lg flex flex-col gap-1 p-3 lg:col-span-2 xl:col-span-1">
                 <p class="text-gray-500">Overall Profit Gained</p>
                 <p class="text-2xl font-medium text-green-600">+₱90,091.00</p>
+                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
+                    <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 7h6v6" />
+                        <path d="m22 7-8.5 8.5-5-5L2 17" />
+                    </svg>
+                    <p><span>12</span>% Higher than yesterday</p>
+                </section>
+                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
+                    <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 17h6v-6" />
+                        <path d="m22 17-8.5-8.5-5 5L2 7" />
+                    </svg>
+                    <p><span>12</span>% Lower than yesterday</p>
+                </section>
             </section>
 
             <!-- Total Amount Lost -->
@@ -248,6 +307,20 @@
                     <div>-</div>
                     <p>₱0.00</p>
                 </div>
+                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
+                    <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 7h6v6" />
+                        <path d="m22 7-8.5 8.5-5-5L2 17" />
+                    </svg>
+                    <p><span>12</span>% Higher than yesterday</p>
+                </section>
+                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
+                    <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 17h6v-6" />
+                        <path d="m22 17-8.5-8.5-5 5L2 7" />
+                    </svg>
+                    <p><span>12</span>% Lower than yesterday</p>
+                </section>
             </section>
 
             <!-- Sales Trend Chart -->
@@ -273,7 +346,7 @@
                             <tr class="bg-secondary text-white">
                                 <th class="text-start font-semibold text-md py-4 pl-5 rounded-tl-md">Medicine Name</th>
                                 <th class="text-start font-semibold text-md py-4 pl-5 xl:table-cell">Sold Units</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 rounded-tr-md md:rounded-tr-0 xl:table-cell">Revenue Amount</th>
+                                <th class="text-start font-semibold text-md py-4 pl-5 xl:table-cell">Revenue Amount</th>
                                 <th class="text-start font-semibold text-md py-4 pl-5 pr-5 rounded-tr-md hidden md:table-cell">Total Discount Given</th>
                             </tr>
                         </thead>
@@ -288,7 +361,6 @@
                                 </td>
                                 <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
                                 <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
                             </tr>
                             <tr class="h-1">
                                 <td class="max-w-[0] truncate py-4 pl-5">2</td>
@@ -298,7 +370,6 @@
                                     </div>
                                 </td>
                                 <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
                                 <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
                             </tr>
                             <tr class="h-1">
@@ -310,7 +381,6 @@
                                 </td>
                                 <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
                                 <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
                             </tr>
                             <tr class="h-1">
                                 <td class="max-w-[0] truncate py-4 pl-5">4</td>
@@ -321,7 +391,6 @@
                                 </td>
                                 <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
                                 <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
                             </tr>
                             <tr class="h-1">
                                 <td class="max-w-[0] truncate py-4 pl-5">5</td>
@@ -331,7 +400,6 @@
                                     </div>
                                 </td>
                                 <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
                                 <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
                             </tr>
 

@@ -226,11 +226,11 @@
                     <button class="w-full bg-gray-100 text-sky-700 border-2 border-sky-700 bg-sky-100 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
                         Edit
                     </button>
-                    <button class="w-full bg-gray-100 text-red-700 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
-                        Delete
-                    </button>
                     <button class="w-full bg-green-100 text-green-700 border border-green-500 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
                         Set as Active
+                    </button>
+                    <button class="w-full bg-red-100 text-red-700 border border-red-500 font-medium py-2.5 px-4 rounded-lg text-sm transition-colors cursor-pointer">
+                        Set as Inctive
                     </button>
                 </section>
             </section>
@@ -240,13 +240,12 @@
     <!-- Add Supplier Side Panel Drawer -->
     <aside id="addSupplierPanel" class="hidden fixed z-60 flex items-end justify-end bg-gray-900/40 w-full h-dvh">
         <!-- Panel Content -->
-        <section class="relative z-10 w-full h-fit bg-white flex flex-col justify-between font-display lg:h-dvh lg:w-[40%] xl:w-[25%]">
+        <section class="relative z-10 w-full h-[80%] bg-white flex flex-col justify-between font-display lg:h-dvh lg:w-[40%] xl:w-[25%]">
 
             <!-- Header -->
             <section class="p-5 border-b flex items-center justify-between bg-gray-50/50">
                 <section>
                     <h2 class="text-lg font-bold text-gray-900">Add New Supplier</h2>
-                    <p class="text-xs text-gray-500">Register a new vendor or distributor</p>
                 </section>
                 <button type="button" class="closeAddSupplierBtn text-gray-400 hover:text-gray-600 transition-colors p-1 cursor-pointer">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -264,7 +263,7 @@
                 <section>
                     <label for="supplier_name" class="block text-xs font-semibold text-gray-700 mb-1">Supplier / Company Name <span class="text-red-500">*</span></label>
                     <section class="relative">
-                        <input type="text" id="supplier_name" name="supplier_name" required placeholder="e.g., VIP Pharma Supplies" class="w-full bg-gray-50 border border-gray-300 rounded-lg py-2.5 pl-9 pr-3 text-sm focus:ring-2 focus:ring-secondary focus:outline-none" />
+                        <input type="text" id="supplier_name" name="supplier_name" required class="w-full bg-gray-50 border border-gray-300 rounded-lg py-2.5 pl-9 pr-3 text-sm focus:ring-2 focus:ring-secondary focus:outline-none" />
                         <svg class="w-4 h-4 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5"></path>
                         </svg>
@@ -276,7 +275,7 @@
                 <section>
                     <label for="supplier_address" class="block text-xs font-semibold text-gray-700 mb-1">Business Address <span class="text-red-500">*</span></label>
                     <section class="relative">
-                        <textarea id="supplier_address" name="supplier_address" rows="3" required placeholder="e.g., 123 Metro Ave, Makati City" class="w-full bg-gray-50 border border-gray-300 rounded-lg py-2.5 pl-9 pr-3 text-sm focus:ring-2 focus:ring-secondary focus:outline-none resize-none"></textarea>
+                        <textarea id="supplier_address" name="supplier_address" rows="3" required class="w-full bg-gray-50 border border-gray-300 rounded-lg py-2.5 pl-9 pr-3 text-sm focus:ring-2 focus:ring-secondary focus:outline-none resize-none"></textarea>
                         <svg class="w-4 h-4 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -289,7 +288,7 @@
                 <section>
                     <label for="supplier_contact" class="block text-xs font-semibold text-gray-700 mb-1">Contact Number <span class="text-red-500">*</span></label>
                     <section class="relative">
-                        <input type="tel" id="supplier_contact" name="supplier_contact" required placeholder="e.g., +63 917 123 4567" class="w-full bg-gray-50 border border-gray-300 rounded-lg py-2.5 pl-9 pr-3 text-sm focus:ring-2 focus:ring-secondary focus:outline-none" />
+                        <input type="tel" id="supplier_contact" name="supplier_contact" required class="w-full bg-gray-50 border border-gray-300 rounded-lg py-2.5 pl-9 pr-3 text-sm focus:ring-2 focus:ring-secondary focus:outline-none" />
                         <svg class="w-4 h-4 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                         </svg>
@@ -301,7 +300,7 @@
                 <section>
                     <label for="supplier_email" class="block text-xs font-semibold text-gray-700 mb-1">Email Address <span class="text-red-500">*</span></label>
                     <section class="relative">
-                        <input type="email" id="supplier_email" name="supplier_email" required placeholder="e.g., contact@vippharma.ph" class="w-full bg-gray-50 border border-gray-300 rounded-lg py-2.5 pl-9 pr-3 text-sm focus:ring-2 focus:ring-secondary focus:outline-none" />
+                        <input type="email" id="supplier_email" name="supplier_email" required class="w-full bg-gray-50 border border-gray-300 rounded-lg py-2.5 pl-9 pr-3 text-sm focus:ring-2 focus:ring-secondary focus:outline-none" />
                         <svg class="w-4 h-4 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
@@ -327,7 +326,7 @@
     <!-- Main Content -->
     <main class="w-full h-fit min-h-full grid grid-cols-1 divide-x divide-primary/20 lg:grid-cols-[7dvw_auto] xl:lg:grid-cols-[15dvw_auto] 3xl:grid-cols-[400px_auto]">
         <!-- Sidebar -->
-        <aside id="sidebar" class="hidden absolute z-50 w-full h-fit bg-secondary text-white p-5 flex flex-col gap-3 divide-y divide-primary/20 lg:block lg:static lg:h-full lg:bg-white lg:text-dark-blue">
+        <aside id="sidebar" class="hidden absolute z-50 w-full h-fit bg-secondary text-white p-5 flex flex-col gap-3 divide-y divide-primary/20 lg:block lg:static lg:h-dvh lg:bg-white lg:text-dark-blue overflow-scroll scrollbar-none">
             <!-- Logo Container -->
             <section class="flex items-center justify-between lg:justify-center xl:justify-between">
                 <a href=" " class="py-3 flex items-center lg:justify-center 2xl:justify-start gap-2">
@@ -355,8 +354,8 @@
                     </section>
                 </section>
 
-                <section class="w-full mt-10 text-center">
-                    <button class="border border-primary rounded-md text-center flex items-center justify-center gap-2 cursor-pointer w-full lg:w-fit h-fit px-3 py-2 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                <section class="w-full mt-10 text-center w-full">
+                    <button class="border border-primary rounded-md text-center flex items-center justify-center gap-2 cursor-pointer w-full lg:w-fit xl:w-full h-fit px-3 py-2 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-log-out-icon lucide-log-out size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m16 17 5-5-5-5" />
                             <path d="M21 12H9" />
@@ -369,9 +368,9 @@
 
             <!-- Sidebar Menu List -->
             <section class="divide-y divide-primary/20 flex flex-col gap-4 ">
-                <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
+                <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start" title="Dashboard">
                     <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Overview</p>
-                    <a href="../admin/dashboard.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                    <a href="../admin/dashboard.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="7" height="9" x="3" y="3" rx="1" />
                             <rect width="7" height="5" x="14" y="3" rx="1" />
@@ -447,7 +446,7 @@
 
                 <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
                     <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Inventory</p>
-                    <a href=" ../admin/medicineInventory.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full">
+                    <a href=" ../admin/medicineInventory.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-warehouse-icon lucide-warehouse size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M18 21V10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v11" />
                             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 1.132-1.803l7.95-3.974a2 2 0 0 1 1.837 0l7.948 3.974A2 2 0 0 1 22 8z" />
@@ -472,7 +471,7 @@
         </aside>
 
         <!-- Main Content -->
-        <section class="w-full h-full p-5 grid grid-cols-1 gap-8  md:grid-cols-2 lg:grid-cols-4 lg:gap-3 lg:grid-rows-[auto_auto_12fr]">
+        <section class="w-full h-dvh p-5 grid grid-cols-1 gap-8  md:grid-cols-2 lg:grid-cols-4 lg:gap-3 lg:grid-rows-[auto_auto_12fr] overflow-y-scroll scrollbar-thin scrollbar-thumb-sendary">
             <!-- Header -->
             <section class="col-span-full flex items-center justify-between">
                 <section class="flex items-center gap-3">
@@ -492,21 +491,28 @@
             </section>
 
             <!-- Search, Filter & Add sales button -->
-            <section class="col-span-full flex gap-2 items-center justify-between flex-col lg:flex-row">
-                <section class="border border-primary flex items-center gap-2 p-2 pr-3 rounded-md w-full h-fit lg:w-100">
-                    <svg class="lucide lucide-search-icon lucide-search size-4.5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m21 21-4.34-4.34" />
-                        <circle cx="11" cy="11" r="8" />
-                    </svg>
-                    <input class="outline-0 text-sm w-full" type="text" name="medicineSearchQuery" id="medicineSearchQueryTxt">
+            <section class="col-span-full flex gap-2 items-center justify-between flex-col sm:flex-row">
+                <section class="flex items-center gap-2 h-fit w-full">
+                    <section class="border border-primary flex items-center gap-2 p-2 pr-3 rounded-md w-full h-fit sm:w-80 md:w-100">
+                        <svg class="lucide lucide-search-icon lucide-search size-4.5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m21 21-4.34-4.34" />
+                            <circle cx="11" cy="11" r="8" />
+                        </svg>
+                        <input class="outline-0 text-sm w-full " type="text" name="medicineSearchQuery" id="medicineSearchQueryTxt">
+                    </section>
+                    <button class="bg-primary text-white size-9 p-2 rounded-md flex items-center justify-center cursor-pointer hover:bg-primary/90">
+                        <svg class="lucide lucide-funnel-icon lucide-funnel size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+                        </svg>
+                    </button>
                 </section>
 
-                <button class="bg-primary px-4 py-2 pr-5 rounded-md text-white cursor-pointer flex items-center justify-center gap-1 w-full lg:w-fit">
+                <button class="bg-primary px-4 py-2 pr-5 rounded-md text-white cursor-pointer flex items-center justify-center gap-1 w-full sm:w-80 md:w-100">
                     <svg class="lucide lucide-plus-icon lucide-plus size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14" />
                         <path d="M12 5v14" />
                     </svg>
-                    <p>Add Record</p>
+                    <p>Add New Supplier</p>
                 </button>
             </section>
 
@@ -559,8 +565,8 @@
                                 </td>
                             </tr>
 
-                            <!-- No Stock Left -->
-                            <tr class="h-1 colspan-full">
+                            <!-- No Supplier Left -->
+                            <tr class="h-1 colspan-full" id="noSupplierRow">
                                 <td colspan="7">
                                     <div class="w-full h-full flex flex-col items-center justify-center gap-2 p-15 text-center">
                                         <img class="size-35 lg:size-100" src="../../assets/image/empty_supplier.png" alt="">
@@ -570,8 +576,9 @@
                                     </div>
                                 </td>
                             </tr>
+
                             <!-- No Stock Left -->
-                            <tr class="h-1 colspan-full">
+                            <tr class="h-1 colspan-full" id="noMatchedResultRow">
                                 <td colspan="7">
                                     <div class="w-full h-full flex flex-col items-center justify-center gap-2 p-15 text-center">
                                         <img class="size-35 lg:size-100" src="../../assets/image/no_result.png" alt="">

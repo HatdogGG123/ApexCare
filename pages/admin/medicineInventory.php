@@ -40,6 +40,7 @@
         <p>Back to top</p>
     </button>
 
+    <!-- Filter Panel -->
     <aside id="inventoryFilterPanel" class="hidden fixed z-60 flex items-end justify-end bg-gray-600/40 w-full h-dvh">
         <!-- Panel Content -->
         <section class="relative z-10 w-full h-[80dvh] bg-white shadow-2xl flex flex-col justify-between font-display lg:h-dvh lg:w-[40%] xl:w-[25%]">
@@ -236,7 +237,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="w-full h-fit min-h-full grid grid-cols-1 divide-x divide-primary/20 lg:grid-cols-[7dvw_auto] lg:grid-cols-[10dvw_auto] xl:grid-cols-[15dvw_auto] 3xl:grid-cols-[400px_auto]">
+    <main class="w-full h-fit min-h-full grid grid-cols-1 divide-x divide-primary/20 lg:grid-cols-[7dvw_auto] xl:lg:grid-cols-[15dvw_auto] 3xl:grid-cols-[400px_auto]">
         <!-- Sidebar -->
         <aside id="sidebar" class="hidden absolute z-50 w-full h-fit bg-secondary text-white p-5 flex flex-col gap-3 divide-y divide-primary/20 lg:block lg:static lg:h-full lg:bg-white lg:text-dark-blue">
             <!-- Logo Container -->
@@ -266,8 +267,8 @@
                     </section>
                 </section>
 
-                <section class="w-full mt-10 text-center">
-                    <button class="border border-primary rounded-md text-center flex items-center justify-center gap-2 cursor-pointer w-full lg:w-fit h-fit px-3 py-2 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                <section class="w-full mt-10 text-center w-full">
+                    <button class="border border-primary rounded-md text-center flex items-center justify-center gap-2 cursor-pointer w-full lg:w-fit xl:w-full h-fit px-3 py-2 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-log-out-icon lucide-log-out size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m16 17 5-5-5-5" />
                             <path d="M21 12H9" />
@@ -279,10 +280,10 @@
             </section>
 
             <!-- Sidebar Menu List -->
-            <section class="divide-y divide-primary/20 flex flex-col gap-4 ">
-                <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
+            <section class="divide-y divide-primary/20 flex flex-col gap-4">
+                <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start" title="Dashboard">
                     <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Overview</p>
-                    <a href="../admin/dashboard.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                    <a href="../admin/dashboard.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="7" height="9" x="3" y="3" rx="1" />
                             <rect width="7" height="5" x="14" y="3" rx="1" />
@@ -324,7 +325,7 @@
                         </svg>
                         <p class="lg:hidden text-start xl:block">Delivery Management</p>
                     </a>
-                    <a href=" ../admin/purchaseRecords.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                    <a href=" ../admin/purchaseRecords.php" class=" rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-receipt-text-icon lucide-receipt-text size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M13 16H8" />
                             <path d="M14 8H8" />
@@ -383,7 +384,7 @@
         </aside>
 
         <!-- Main Content -->
-        <section class="w-full h-full p-5 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-3 lg:grid-rows-[auto_auto_12fr]">
+        <section class="w-full h-dvh p-5 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-3 lg:grid-rows-[auto_auto_12fr] overflow-y-scroll scrollbar-thin scrollbar-thumb-secondary">
             <!-- Header -->
             <section class="col-span-full flex items-center justify-between">
                 <section class="flex items-center gap-3">
@@ -404,12 +405,19 @@
 
             <!-- Search, Filter & Add sales button -->
             <section class="col-span-full flex flex-col gap-2">
-                <section class="border border-primary flex items-center gap-2 p-2 pr-3 rounded-md w-full h-fit lg:w-100">
-                    <svg class="lucide lucide-search-icon lucide-search size-4.5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m21 21-4.34-4.34" />
-                        <circle cx="11" cy="11" r="8" />
-                    </svg>
-                    <input class="outline-0 text-sm w-full" type="text" name="medicineSearchQuery" id="medicineSearchQueryTxt">
+                <section class="flex items-center gap-2 h-fit">
+                    <section class="border border-primary flex items-center gap-2 p-2 pr-3 rounded-md w-full h-fit lg:w-100">
+                        <svg class="lucide lucide-search-icon lucide-search size-4.5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m21 21-4.34-4.34" />
+                            <circle cx="11" cy="11" r="8" />
+                        </svg>
+                        <input class="outline-0 text-sm w-full" type="text" name="medicineSearchQuery" id="medicineSearchQueryTxt">
+                    </section>
+                    <button class="bg-primary text-white size-9 p-2 rounded-md flex items-center justify-center cursor-pointer hover:bg-primary/90">
+                        <svg class="lucide lucide-funnel-icon lucide-funnel size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+                        </svg>
+                    </button>
                 </section>
             </section>
 
@@ -540,7 +548,11 @@
 
                             <!-- Invisible Row -->
                             <tr class="h-auto col-span-full">
-                                <td colspan="3"></td>
+                                <td colspan="7">
+                                    <section class="p-3 text-center text-gray-400">
+                                        <p>End of Results</p>
+                                    </section>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -552,6 +564,13 @@
 
     <script src="../../js/jquery.min.js"></script>
     <script>
+        $(document).ready(() => {
+            $("p").removeClass("translate-y-10").css({
+                "display": "block"
+            });
+        })
+
+
         $("#openSidebarBtn").click(() => {
             $("#sidebar").slideDown();
         })

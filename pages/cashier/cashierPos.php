@@ -73,7 +73,7 @@
             <!-- Sidebar Menu List -->
             <section class="divide-y divide-primary/20 flex flex-col gap-4 w-full">
                 <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
-                    <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Overview</p>
+                    <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Actions</p>
                     <a href="../cashier/cashierPos.php" class="bg-primary text-white rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="7" height="9" x="3" y="3" rx="1" />
@@ -134,10 +134,14 @@
                             <span class="font-bold text-gray-900 text-sm">86</span> Stock(s) left
                         </p>
 
-
-                        <button class="bg-primary py-2 px-3 rounded-md text-white cursor-pointer">
-                            Add Item
-                        </button>
+                        <section class="flex gap-2">
+                            <button class="bg-white border border-primary py-2 px-3 rounded-md text-black font-medium cursor-pointer">
+                                Request Restock
+                            </button>
+                            <button class="bg-primary py-2 px-3 rounded-md text-white cursor-pointer font-medium">
+                                Add Item
+                            </button>
+                        </section>
                     </section>
                 </section>
             </section>
@@ -147,7 +151,7 @@
             <span>View Sale Panel</span>
         </button>
 
-        <!-- Add New Sale Side Panel Drawer -->
+        <!-- Add New Sale Side Panel -->
         <section id="addNewSalePanelBtn" class="hidden bg-gray-500/50 fixed bottom-0 right-0 w-full h-dvh shadow-xl z-40 lg:w-[93dvw] lg:block xl:w-full xl:static">
             <section class="w-full h-full bg-white flex flex-col justify-between">
                 <section class="p-5 border-b border-gray-100 flex items-start justify-between bg-gray-50/50">
