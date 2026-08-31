@@ -49,7 +49,7 @@
                 <section>
                     <h2 class="text-lg font-medium text-gray-900">Filter Records</h2>
                 </section>
-                <button type="button" class="closeFilterBtn text-gray-400 hover:text-gray-600 transition-colors p-1">
+                <button id="closeFilterBtn" type="button" class="closeFilterBtn text-gray-400 hover:text-gray-600 transition-colors p-1">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -147,7 +147,7 @@
                 <button type="reset" class="w-1/3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2.5 rounded-lg text-sm transition-colors">
                     Reset
                 </button>
-                <button type="button" class="w-2/3 bg-[#2d3e50] hover:bg-[#1e2a38] text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
+                <button type="button" class="w-2/3 bg-primary hover:bg-primary/90 text-white font-medium py-2.5 rounded-lg text-sm transition-colors">
                     Apply Filters
                 </button>
             </section>
@@ -166,7 +166,7 @@
                         <span class="text-xs font-semibold text-secondary tracking-wider">Purchase Order</span>
                         <h2 class="text-xl font-bold text-gray-900 leading-tight mt-0.5">PO-2026-089</h2>
                     </div>
-                    <button class="closeViewDetailPanelBtn text-gray-400 transition-colors cursor-pointer hover:text-gray-600 p-1">
+                    <button id="closeViewDetailPanelBtn" class="closeViewDetailPanelBtn text-gray-400 transition-colors cursor-pointer hover:text-gray-600 p-1">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
@@ -332,7 +332,7 @@
                     <h2 class="text-lg font-bold text-gray-900">Create Order</h2>
                     <p class="text-xs text-gray-500">OD-123</p>
                 </section>
-                <button type="button" class="closeAddRecordBtn text-gray-400 hover:text-gray-600 transition-colors p-1">
+                <button id="closeAddRecordBtn" type="button" class="closeAddRecordBtn text-gray-400 hover:text-gray-600 transition-colors p-1">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -480,14 +480,15 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="w-full h-fit min-h-full grid grid-cols-1 divide-x divide-primary/20 lg:grid-cols-[7dvw_auto] xl:lg:grid-cols-[15dvw_auto] 3xl:grid-cols-[400px_auto]">
+    <main class="w-full h-fit min-h-full grid grid-cols-1 divide-x divide-primary/20 lg:grid-cols-[auto_1fr]">
         <!-- Sidebar -->
         <aside id="sidebar" class="hidden absolute z-50 w-full h-fit bg-secondary text-white p-5 flex flex-col gap-3 divide-y divide-primary/20 lg:block lg:static lg:h-dvh lg:bg-white lg:text-dark-blue overflow-y-scroll scrollbar-none">
+
             <!-- Logo Container -->
             <section class="flex items-center justify-between lg:justify-center xl:justify-between">
                 <a href=" " class="py-3 flex items-center lg:justify-center 2xl:justify-start gap-2">
                     <p class="bg-primary size-10 px-3 py-2 flex items-center justify-center text-white font-semibold rounded-md text-l">AC</p>
-                    <p class="text-lg font-medium font-semibold lg:hidden xl:block">ApexCare Pharmacy</p>
+                    <p class="sidebar-hidden-item text-lg font-medium font-semibold lg:hidden">ApexCare Pharmacy</p>
                 </a>
                 <button id="closeSidebarBtn" class="text-accent rounded-md cursor-pointer lg:w-fit h-fit p-2 flex items-center gap-3 lg:hidden 2xl:w-full">
                     <svg class="lucide lucide-x-icon lucide-x size-9" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -500,24 +501,24 @@
             <!-- Profile -->
             <section class="flex flex-col gap-2 w-full h-fit py-3">
                 <section class="flex flex-col gap-2">
-                    <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">My Profile</p>
+                    <p class="sidebar-hidden-item lg:hidden font-medium text-white/60 lg:text-dark-blue/30">My Profile</p>
                     <section class="flex gap-2 items-center">
                         <p class="bg-primary size-10 px-3 py-2 flex items-center justify-center text-white font-medium rounded-md text-xl">RT</p>
                         <section class="flex flex-col">
-                            <p class="text-lg font-medium lg:hidden xl:block">Renzo Tolentino</p>
-                            <p class="text-white/70 lg:text-gray-500 lg:hidden xl:block">U1213</p>
+                            <p class="sidebar-hidden-item text-lg font-medium lg:hidden">Renzo Tolentino</p>
+                            <p class="sidebar-hidden-item text-white/70 lg:text-gray-500 lg:hidden">U1213</p>
                         </section>
                     </section>
                 </section>
 
-                <section class="w-full mt-10 text-center w-full">
+                <section class="w-full mt-10 text-center">
                     <button class="border border-primary rounded-md text-center flex items-center justify-center gap-2 cursor-pointer w-full lg:w-fit xl:w-full h-fit px-3 py-2 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-log-out-icon lucide-log-out size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m16 17 5-5-5-5" />
                             <path d="M21 12H9" />
                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
                         </svg>
-                        <p class="lg:hidden xl:block">Logout</p>
+                        <p class="sidebar-hidden-item lg:hidden">Logout</p>
                     </button>
                 </section>
             </section>
@@ -525,7 +526,7 @@
             <!-- Sidebar Menu List -->
             <section class="divide-y divide-primary/20 flex flex-col gap-4 ">
                 <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start" title="Dashboard">
-                    <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Overview</p>
+                    <p class="sidebar-hidden-item font-medium text-white/60 lg:hidden lg:text-dark-blue/30">Overview</p>
                     <a href="../admin/dashboard.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="7" height="9" x="3" y="3" rx="1" />
@@ -533,12 +534,11 @@
                             <rect width="7" height="9" x="14" y="12" rx="1" />
                             <rect width="7" height="5" x="3" y="16" rx="1" />
                         </svg>
-                        <p class="lg:hidden text-start xl:block">Dashboard</p>
+                        <p class="sidebar-hidden-item text-start lg:hidden">Dashboard</p>
                     </a>
                 </section>
-
                 <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
-                    <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Procurement</p>
+                    <p class="sidebar-hidden-item font-medium text-white/60 lg:hidden lg:text-dark-blue/30">Procurement</p>
                     <a href=" ../admin/supplierManagement.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-handshake-icon lucide-handshake size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8 " stroke-linecap="round" stroke-linejoin="round">
                             <path d="m11 17 2 2a1 1 0 1 0 3-3" />
@@ -547,7 +547,7 @@
                             <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
                             <path d="M3 4h8" />
                         </svg>
-                        <p class="lg:hidden text-start xl:block">Supplier Management</p>
+                        <p class="sidebar-hidden-item text-start lg:hidden">Supplier Management</p>
                     </a>
                     <a href=" ../admin/orderManagement.php" class="bg-primary text-white rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-clipboard-pen-icon lucide-clipboard-pen size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -556,7 +556,7 @@
                             <path d="M8 22H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
                             <rect x="8" y="2" width="8" height="4" rx="1" />
                         </svg>
-                        <p class="lg:hidden text-start xl:block">Order Management</p>
+                        <p class="sidebar-hidden-item text-start lg:hidden">Order Management</p>
                     </a>
                     <a href=" ../admin/deliveryMangement.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-truck-icon lucide-truck size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -566,28 +566,28 @@
                             <circle cx="17" cy="18" r="2" />
                             <circle cx="7" cy="18" r="2" />
                         </svg>
-                        <p class="lg:hidden text-start xl:block">Delivery Management</p>
+                        <p class="sidebar-hidden-item text-start lg:hidden">Delivery Management</p>
                     </a>
-                    <a href=" ../admin/purchaseRecords.php" class=" rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
+                    <a href=" ../admin/purchaseRecords.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-receipt-text-icon lucide-receipt-text size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M13 16H8" />
                             <path d="M14 8H8" />
                             <path d="M16 12H8" />
                             <path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z" />
                         </svg>
-                        <p class="lg:hidden text-start xl:block">Purchase Records</p>
+                        <p class="sidebar-hidden-item text-start lg:hidden">Purchase Records</p>
                     </a>
                 </section>
 
                 <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
-                    <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Sales</p>
+                    <p class="sidebar-hidden-item font-medium text-white/60 lg:hidden lg:text-dark-blue/30">Sales</p>
                     <a href=" ../admin/salesRecords.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-badge-dollar-sign-icon lucide-badge-dollar-sign size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
                             <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
                             <path d="M12 18V6" />
                         </svg>
-                        <p class="lg:hidden text-start xl:block">Sales Records</p>
+                        <p class="sidebar-hidden-item text-start lg:hidden">Sales Records</p>
                     </a>
                     <a href=" ../admin/salesReports.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-chart-column-icon lucide-chart-column size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -596,31 +596,31 @@
                             <path d="M13 17V5" />
                             <path d="M8 17v-3" />
                         </svg>
-                        <p class="lg:hidden text-start xl:block">Sales Reports</p>
+                        <p class="sidebar-hidden-item text-start lg:hidden">Sales Reports</p>
                     </a>
                 </section>
 
                 <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
-                    <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Inventory</p>
-                    <a href=" ../admin/medicineInventory.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full">
+                    <p class="sidebar-hidden-item font-medium text-white/60 lg:hidden lg:text-dark-blue/30">Inventory</p>
+                    <a href=" ../admin/medicineInventory.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-warehouse-icon lucide-warehouse size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M18 21V10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v11" />
                             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 1.132-1.803l7.95-3.974a2 2 0 0 1 1.837 0l7.948 3.974A2 2 0 0 1 22 8z" />
                             <path d="M6 13h12" />
                             <path d="M6 17h12" />
                         </svg>
-                        <p class="lg:hidden text-start xl:block">Medicine Inventory</p>
+                        <p class="sidebar-hidden-item text-start lg:hidden">Medicine Inventory</p>
                     </a>
                 </section>
 
                 <section class="py-3 flex flex-col lg:items-center gap-1 xl:items-start">
-                    <p class="lg:hidden font-medium text-white/60 xl:block lg:text-dark-blue/30">Staff</p>
+                    <p class="sidebar-hidden-item  font-medium text-white/60 lg:hidden lg:text-dark-blue/30">Staff</p>
                     <a href=" ../admin/userManagement.php" class="rounded-md cursor-pointer lg:w-fit h-fit px-3 py-2 flex items-center gap-3 2xl:w-full hover:bg-secondary/40 transition duration-100">
                         <svg class="lucide lucide-user-round-icon lucide-user-round size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="8" r="5" />
                             <path d="M20 21a8 8 0 0 0-16 0" />
                         </svg>
-                        <p class="lg:hidden text-start xl:block">Staff Management</p>
+                        <p class="sidebar-hidden-item text-start lg:hidden">Staff Management</p>
                     </a>
                 </section>
             </section>
@@ -656,14 +656,16 @@
                         </svg>
                         <input class="outline-0 text-sm w-full " type="text" name="medicineSearchQuery" id="medicineSearchQueryTxt">
                     </section>
-                    <button class="bg-primary text-white size-9 p-2 rounded-md flex items-center justify-center cursor-pointer hover:bg-primary/90">
+
+                    <!-- Filter Button -->
+                    <button id="showFilterBtn" class="bg-primary text-white size-9 p-2 rounded-md flex items-center justify-center cursor-pointer hover:bg-primary/90">
                         <svg class="lucide lucide-funnel-icon lucide-funnel size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
                         </svg>
                     </button>
                 </section>
 
-                <button class="bg-primary px-4 py-2 pr-5 rounded-md text-white cursor-pointer flex items-center justify-center gap-1 w-full sm:w-80 md:w-100">
+                <button id="showaddRecordBtn" class="bg-primary px-4 py-2 pr-5 rounded-md text-white cursor-pointer flex items-center justify-center gap-1 w-full sm:w-80 md:w-100">
                     <svg class="lucide lucide-plus-icon lucide-plus size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14" />
                         <path d="M12 5v14" />
@@ -749,7 +751,6 @@
                                 </td>
                             </tr>
 
-
                             <!-- No Stock Left -->
                             <tr class="h-1 colspan-full">
                                 <td colspan="7">
@@ -772,9 +773,6 @@
                                 </td>
                             </tr>
 
-
-
-
                             <!-- Invisible Row -->
                             <tr class="h-auto col-span-full">
                                 <td colspan="3"></td>
@@ -788,11 +786,44 @@
 
     <script src="../../js/jquery.min.js"></script>
     <script>
+        $("#sidebar ").on("mouseenter", function() {
+            $("#sidebar .sidebar-hidden-item").removeClass("lg:hidden").show(200);
+            $("#sidebar a").removeClass("lg:w-fit");
+            $("#sidebar section").removeClass("lg:w-fit");
+        });
+        $("#sidebar").on("mouseleave", function() {
+            $("#sidebar .sidebar-hidden-item").addClass("lg:hidden transition duration-100").hide(200);
+            $("#sidebar a").addClass("lg:w-full");
+            $("#sidebar section").addClass("lg:w-full");
+        });
+
         $("#openSidebarBtn").click(() => {
             $("#sidebar").slideDown();
-        })
+        });
         $("#closeSidebarBtn").click(() => {
             $("#sidebar").slideUp();
+        });
+
+        $("#showFilterBtn").click(() => {
+            $("#filterPanel").toggleClass("hidden");
+        })
+        $("#closeFilterBtn").click(() => {
+            $("#filterPanel").toggleClass("hidden");
+        })
+
+        $("#showaddRecordBtn").click(() => {
+            $("#addRecordPanel").toggleClass("hidden");
+        })
+        $("#closeAddRecordBtn").click(() => {
+            $("#addRecordPanel").toggleClass("hidden");
+        })
+
+        // Modify this function when showing row. It needs an ID Parameter to show the details of specific row
+        $(".viewDetailBtn").click(() => {
+            $("#viewDetailPanel").toggleClass("hidden");
+        })
+        $("#closeViewDetailPanelBtn").click(() => {
+            $("#viewDetailPanel").toggleClass("hidden");
         })
 
         let tooltipMessageToggleBtnCount = $(".toggleToolTipMessageBtn").length;
