@@ -3,6 +3,187 @@ DROP DATABASE pharmacy_db;
 CREATE DATABASE pharmacy_db;
 USE pharmacy_db;
 
+-- User Role Table
+CREATE TABLE user_role_table (
+    role_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    role_name VARCHAR(250) NOT NULL
+);
+
+-- Medicine Brand Table
+CREATE TABLE medicine_brand_table (
+    brand_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    brand_name VARCHAR(250) NOT NULL
+);
+
+-- Measurement Unit
+CREATE TABLE measurement_unit_table (
+    measurement_unit_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    unit_name VARCHAR(100) NOT NULL,
+    unit_symbol VARCHAR(10) NOT NULL
+);
+
+-- Medicine Type
+CREATE TABLE medicine_type_table (
+    medicine_type_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    medicine_type VARCHAR(100) NOT NULL
+);
+
+-- Customer Type
+CREATE TABLE customer_type_table (
+    customer_type_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    customer_type VARCHAR(100) NOT NULL,
+    discount_percentage DECIMAL(10,2) NOT NULL
+);
+
+-- User Table
+CREATE TABLE user_table(
+    user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    role_id INT NOT NULL, -- FK
+    user_number VARCHAR(100) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    middle_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(250) NOT NULL,
+    hash_password VARCHAR(250) NOT NULL,
+    contact_number VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deactivated_at TIMESTAMP NULL
+);
+ALTER TABLE user_table ADD CONSTRAINT fk_user_role FOREIGN KEY(role_id) REFERENCES user_role_table(role_id);
+ALTER TABLE user_table ADD INDEX user_number (user_number);
+
+-- Medicine Table
+CREATE TABLE medicine_table(
+	medicine_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    medicine_type_id INT NOT NULL, -- FK
+    medicine_brand_id INT NOT NULL, -- FK
+    measurement_unit_id INT NOT NULL, -- FK
+    measurement_value DECIMAL(10,2) NOT NULL,
+    selling_price DECIMAL(10,2) NOT NULL,
+    name VARCHAR(250) NOT NULL
+);
+ALTER TABLE medicine_table ADD CONSTRAINT fk_medicine_table_medicine_type_id FOREIGN KEY(medicine_type_id) REFERENCES medicine_type_table(medicine_type_id);
+ALTER TABLE medicine_table ADD CONSTRAINT fk_medicine_table_medicine_brand_id FOREIGN KEY(medicine_brand_id) REFERENCES medicine_brand_table(brand_id);
+ALTER TABLE medicine_table ADD CONSTRAINT fk_medicine_table_measurement_unit_id FOREIGN KEY(measurement_unit_id) REFERENCES measurement_unit_table(measurement_unit_id);
+ALTER TABLE medicine_table ADD INDEX name (name);
+
+-- Supplier Table
+CREATE TABLE supplier_table (
+    supplier_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    supplier_number VARCHAR(100) NOT NULL,
+    name VARCHAR(250) NOT NULL,
+    address VARCHAR(250) NOT NULL,
+    contact_number VARCHAR(20) NOT NULL,
+    email VARCHAR(250) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP NULL
+);
+ALTER TABLE supplier_table ADD INDEX name (name);
+ALTER TABLE supplier_table ADD INDEX supplier_number (supplier_number);
+
+-- Delivery Table
+CREATE TABLE delivery_table (
+    delivery_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    supplier_id INT NOT NULL, -- FK
+    receiver_id INT NOT NULL, -- FK
+    delivery_number VARCHAR(100) NOT NULL,
+    total_amount DECIMAL(10,2) NULL,
+    received_date TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE delivery_table ADD CONSTRAINT fk_delivery_supplier FOREIGN KEY(supplier_id) REFERENCES supplier_table(supplier_id);
+ALTER TABLE delivery_table ADD CONSTRAINT fk_delivery_receiver FOREIGN KEY(receiver_id) REFERENCES user_table(user_id);
+ALTER TABLE delivery_table ADD INDEX delivery_number (delivery_number);
+
+-- Delivery Detail
+CREATE TABLE delivery_detail_table (
+	delivery_detail_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    delivery_id INT NOT NULL, -- FK
+    medicine_id INT NOT NULL, -- FK
+    order_detail_id INT NOT NULL, -- FK
+    received_quantity INT NOT NULL DEFAULT 0,
+    batch_number VARCHAR(100) NOT NULL, 
+    expiry_date TIMESTAMP NOT NULL,
+    unit_price DECIMAL(10,2) NOT NULL
+);
+ALTER TABLE delivery_detail_table ADD CONSTRAINT fk_delivery_detail_delivery_id FOREIGN KEY(delivery_id) REFERENCES delivery_table(delivery_id);
+
+-- Order Table
+CREATE TABLE order_table (
+    order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    creator_id INT NOT NULL,
+    supplier_id INT NOT NULL,
+    fulfillment_status VARCHAR(30) NOT NULL,
+    order_number VARCHAR(200) UNIQUE NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    requested_at TIMESTAMP NULL,
+    approved_at TIMESTAMP NULL,
+    arrived_at TIMESTAMP NULL,
+    completed_at TIMESTAMP NULL,
+    cancelled_at TIMESTAMP NULL,
+    returned_at TIMESTAMP NULL
+);
+ALTER TABLE order_table ADD CONSTRAINT fk_order_creator FOREIGN KEY(creator_id) REFERENCES user_table(user_id);
+ALTER TABLE order_table ADD CONSTRAINT fk_order_supplier FOREIGN KEY(supplier_id) REFERENCES supplier_table(supplier_id);
+ALTER TABLE order_table ADD INDEX order_number_index (order_number);
+
+-- Order Details
+CREATE TABLE order_detail_table (
+	order_detail_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL, -- FK
+    medicine_id INT NOT NULL, -- Fk
+    request_quantity INT NOT NULL
+);
+ALTER TABLE order_detail_table ADD CONSTRAINT fk_order_id FOREIGN KEY(order_id) REFERENCES order_table(order_id);
+ALTER TABLE order_detail_table ADD CONSTRAINT fk_order_detail_medicine_id FOREIGN KEY(medicine_id) REFERENCES medicine_table(medicine_id);
+ALTER TABLE order_detail_table ADD delivery_detail_id INT NOT NULL;
+ALTER TABLE order_detail_table ADD received_quantity INT NOT NULL DEFAULT 0;
+ALTER TABLE order_detail_table ADD CONSTRAINT fk_order_detail_delivery_detail_id FOREIGN KEY(delivery_detail_id) REFERENCES delivery_detail_table(delivery_detail_id);
+
+-- Medicine Stock
+CREATE TABLE medicine_stock_table(
+	medicine_stock_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    delivery_detail_id INT NOT NULL, -- FK
+    current_stock_quantity INT NOT NULL DEFAULT 0
+);
+ALTER TABLE medicine_stock_table ADD CONSTRAINT fk_medicine_stock_delivery_detail_id FOREIGN KEY(delivery_detail_id) REFERENCES delivery_detail_table(delivery_detail_id);
+
+-- Sales
+CREATE TABLE sales_table(
+	sales_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    customer_type_id INT NOT NULL, -- FK
+    cashier_id INT NOT NULL, -- FK
+    sales_number VARCHAR(100) NOT NULL, 
+    payment_method VARCHAR(100) NOT NULL, 
+    total_amount DECIMAL(10,2) NOT NULL, 
+    discounted_amount DECIMAL(10,2) NOT NULL,
+    is_prescribed TINYINT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    deleted_at TIMESTAMP NULL
+);
+ALTER TABLE sales_table ADD CONSTRAINT fk_sales_customer_type_id FOREIGN KEY(customer_type_id) REFERENCES customer_type_table(customer_type_id);
+ALTER TABLE sales_table ADD CONSTRAINT fk_sales_cashier_id FOREIGN KEY(cashier_id) REFERENCES user_table(user_id);
+ALTER TABLE sales_table ADD INDEX sales_number (sales_number);
+
+-- Sales Details
+CREATE TABLE sales_details_table(
+	sales_details_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    sales_id INT NOT NULL, -- FK
+    medicine_stock_id INT NOT NULL, -- FK
+    quantity INT NOT NULL DEFAULT 0,
+    sub_total_amount DECIMAL(10,2) NOT NULL
+);
+ALTER TABLE sales_details_table ADD CONSTRAINT fk_sales_details_sales_id FOREIGN KEY(sales_id) REFERENCES sales_table(sales_id);
+
+-- Sales Customer Type Detail
+CREATE TABLE sales_customer_type_detail_table (
+	sales_customer_type_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    sales_id INT NOT NULL, -- FK
+    customer_type_id INT NOT NULL, -- FK
+    id_number VARCHAR(100)
+);
+ALTER TABLE sales_customer_type_detail_table ADD CONSTRAINT fk_sales_customer_type_detail_sales_id FOREIGN KEY(sales_id) REFERENCES sales_table(sales_id);
+ALTER TABLE sales_customer_type_detail_table ADD CONSTRAINT fk_sales_customer_type_detail_customer_type_id FOREIGN KEY(customer_type_id) REFERENCES customer_type_table(customer_type_id);
+
 -- =========================================================
 -- Pharmacy System - Hardcoded Seed Data (INSERT statements)
 -- Order respects foreign key dependencies.
