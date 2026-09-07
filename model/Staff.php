@@ -1,6 +1,51 @@
 <?php
-class Staff
+
+require_once("Db.php");
+
+class Staff extends Db
 {
-    // Constructor
-    public function __construct() {}
+    // ================================================================
+    // FUNCTIONS TO FETCH DATA
+    // ================================================================
+    public function getAllStaffRecords()
+    {
+        $sql = "SELECT * FROM user_table;";
+
+        return $this->getResult($sql, $executeParameters = []);
+    }
+
+    // ================================================================
+    // FUNCTIONS TO INSERT DATA
+    // ================================================================
+
+    // ================================================================
+    // FUNCTIONS TO UPDATE DATA
+    // ================================================================
+
+    // ================================================================
+    // HELPER FUNCTIONS
+    // ================================================================
+
+    // Function to catch the error if there are any error when
+    // connecting to database (Fetching, Inserting, Deleting, or 
+    // Updating Records)
+    // 
+    // $query - SQL Query to be performed
+    // $executeParameters (Optional Parameter) - The parameters needed to execute the prepared statements
+    //                    - This is the values needed to match the number of placeholders ('?' symbol)
+    // 
+    // Can be called as:
+    //  - getResult($sql);
+    //  - getResult($sql, $executeParameters);
+    public function getResult($query, $executeParameters = [])
+    {
+        try {
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute($executeParameters);
+
+            return $stmt->fetchAll();
+        } catch (\Throwable $e) {
+            return ['status' => 'error', 'message' => $e->getMessage()];
+        }
+    }
 }

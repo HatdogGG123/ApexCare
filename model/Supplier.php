@@ -2,29 +2,16 @@
 
 require_once("Db.php");
 
-class Medicine extends Db
+class Supplier extends Db
 {
     // ================================================================
     // FUNCTIONS TO FETCH DATA
     // ================================================================
-    public function getFilteredMedicine(string $medicine_name_query = "", int $medicine_id = 0): array
+    public function getAllSuppliers()
     {
-        $sql = "SELECT * FROM medicine_table";
-        $params = [];
+        $sql = "SELECT * FROM supplier_table;";
 
-        if (!empty($medicine_name_query)) {
-            $sql .= " WHERE `name` LIKE ?";
-            $params[] = "%" . $medicine_name_query . "%";
-        }
-
-        if ($medicine_id > 0) {
-            $sql .= " WHERE medicine_id = ?";
-            $params[] = $medicine_id;
-        }
-
-        $sql .= " ORDER BY `name`";
-
-        return $this->getResult($sql, $params);
+        return $this->getResult($sql, $executeParameters = []);
     }
 
     // ================================================================
