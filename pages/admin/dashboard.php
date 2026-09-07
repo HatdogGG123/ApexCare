@@ -478,13 +478,15 @@
                 </section>
             </section>
 
-            <!-- Top 5 Customer Chart -->
             <section class="grid col-span-full grid-cols-1 gap-4 mt-5 md:grid-cols-4">
+                <!-- Top 5 Customer Chart -->
                 <section class="col-span-1 h-80 relative flex items-center justify-center md:col-span-2 lg:col-span-1">
                     <canvas id="dashboardPaymentMethodPieChart"></canvas>
                 </section>
 
-                <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                <!-- Recent Transactions -->
+                <section class="col-span-1 md:col-span-2 lg:col-span-3 h-fit flex flex-col gap-1">
+                    <p>Recent Transactions</p>
                     <section class="col-span-full rounded-md h-full border border-gray-400/40 overflow-hidden">
                         <div class="max-h-full h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-secondary rounded-b-lg">
                             <table class="w-full text-sm border-collapse">

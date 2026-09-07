@@ -342,20 +342,21 @@
 
             <!-- Sales Trend Chart -->
             <section class="col-span-full h-full mt-5 lg:col-span-full xl:col-span-2">
-                <p class="text-gray-500 text-lg">Sales Trend</p>
+                <p class="text-gray-500 text-md">Sales Trend</p>
                 <div class="w-full"><canvas class="w-full" id="salesTrendChartContainer"></canvas></div>
             </section>
 
             <!-- Customer Purchase Percentage -->
             <section class="col-span-full mt-5 lg:col-span-full xl:col-span-2">
-                <p class="text-gray-500 text-lg">Sales Revenue per Customer</p>
+                <p class="text-gray-500 text-md">Sales Revenue per Customer</p>
                 <div class="w-full"><canvas class="w-full" id="salesPerCustomerTypeContainer"></canvas></div>
             </section>
 
 
             <!-- Top 5 Selling Medicine -->
-            <section class="col-span-full rounded-md h-80 border border-gray-400/40 overflow-hidden">
-                <div class=" h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-secondary rounded-b-lg">
+            <section class="col-span-full rounded-md h-100 overflow-hidden flex flex-col gap-2 mt-5">
+                <p class="text-gray-500 text-md">Customer Purchase Behavior & Segment Analytics</p>
+                <div class=" h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-secondary rounded-b-lg border border-gray-400/40 rounded-md">
                     <table class="w-full h-full text-sm border-collapse">
                         <thead>
                             <tr>
