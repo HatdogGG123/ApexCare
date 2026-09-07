@@ -1,43 +1,23 @@
+
 <?php
 
-require_once("../model/Medicine.php");
+require_once("../model/staff.php");
 
 header('Content-Type: application/json');
 
-$medicine = null;
+$staff = null;
 
 if (empty($_POST["action"])) {
     echo json_encode(['error' => 'Invalid action']);
 } else {
-    $medicine = new Medicine();
+    $staff = new Staff();
 
     switch ($_POST["action"]) {
         // ================================================================
         // FUNCTIONS TO FETCH DATA
         // ================================================================
-        case 'getMedicineByName':
-            // Error Handling
-
-            $result = $medicine->getFilteredMedicine(medicine_name_query: $_POST["medicine_name_to_search"]);
-
-            echo json_encode([
-                "status" => "success",
-                "data" => $result
-            ]);
-
-            exit();
-            break;
-        case 'getMedicineById':
-            // Error Handling
-
-            $result = $medicine->getFilteredMedicine(medicine_id: $_POST["medicine_id_to_search"]);
-
-            echo json_encode([
-                "status" => "success",
-                "data" => $result
-            ]);
-
-            exit();
+        case '':
+            // Code
             break;
 
         // ================================================================

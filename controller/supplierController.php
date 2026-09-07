@@ -1,36 +1,24 @@
 <?php
 
-require_once("../model/Medicine.php");
+require_once("../model/Supplier.php");
 
 header('Content-Type: application/json');
 
-$medicine = null;
+$supplier = null;
 
 if (empty($_POST["action"])) {
     echo json_encode(['error' => 'Invalid action']);
 } else {
-    $medicine = new Medicine();
+    $supplier = new Supplier();
 
     switch ($_POST["action"]) {
         // ================================================================
         // FUNCTIONS TO FETCH DATA
         // ================================================================
-        case 'getMedicineByName':
-            // Error Handling
+        case 'getAllSuppliers':
+            // Error Handling or Validations
 
-            $result = $medicine->getFilteredMedicine(medicine_name_query: $_POST["medicine_name_to_search"]);
-
-            echo json_encode([
-                "status" => "success",
-                "data" => $result
-            ]);
-
-            exit();
-            break;
-        case 'getMedicineById':
-            // Error Handling
-
-            $result = $medicine->getFilteredMedicine(medicine_id: $_POST["medicine_id_to_search"]);
+            $result = $supplier->getAllSuppliers();
 
             echo json_encode([
                 "status" => "success",
@@ -49,7 +37,10 @@ if (empty($_POST["action"])) {
         // ================================================================
 
         default:
-            echo json_encode(['error' => 'Invalid action']);
+            echo json_encode([
+                "status" => "error",
+                'message' => 'Invalid action'
+            ]);
             break;
     }
     exit();
