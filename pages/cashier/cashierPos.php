@@ -38,7 +38,7 @@
             <section class="flex items-center justify-between lg:justify-center xl:justify-between">
                 <a href=" " class="py-3 flex items-center lg:justify-center 2xl:justify-start gap-2">
                     <p class="bg-primary size-10 px-3 py-2 flex items-center justify-center text-white font-semibold rounded-md text-lg">AC</p>
-                    <p class="text-lg font-medium font-semibold lg:hidden xl:block">ApexCare Pharmacy</p>
+                    <p class="text-lg font-medium font-semibold lg:hidden xl:block">ApexCare</p>
                 </a>
                 <button id="closeSidebarBtn" class="text-accent rounded-md cursor-pointer lg:w-fit h-fit p-2 flex items-center gap-3 lg:hidden 2xl:w-full">
                     <svg class="lucide lucide-x-icon lucide-x size-9" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -356,6 +356,20 @@
 
     <script src="../../js/jquery.min.js"></script>
     <script>
+        /*
+        ==============================================================================
+        MAIN FUNCTIONS 
+         - Functions that are needed/required and do specific things 
+        ==============================================================================
+        */
+
+
+        /*
+        ==============================================================================
+        TOGGLE FUNCTIONS 
+        - Functions just show/hide elements
+        ==============================================================================
+         */
         $("#openSidebarBtn").click(() => {
             $("#sidebar").slideDown();
         })
@@ -384,6 +398,13 @@
             })
 
         }
+
+        /*
+        ==============================================================================
+        HELPER FUNCTIONS, ADDITIONAL FUNCTIONS & EVENT LISTENER FUNCTIONS
+        - Functions to help reduce redundancy
+        ==============================================================================
+        */
     </script>
 </body>
 
