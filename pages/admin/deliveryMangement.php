@@ -596,20 +596,19 @@
             </section>
 
             <!-- Table records -->
-            <section class="col-span-full flex flex-col w-full h-full gap-2">
-                <div class="border border-secondary/30 rounded-lg w-full h-full">
-                    <table class="table-auto w-full h-full">
-                        <thead class="">
-                            <tr class="bg-secondary text-white">
-                                <th class="text-start font-semibold text-md py-4 pl-5 rounded-tl-md md:table-cell">Delivery Number</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 hidden w-[55%] sm:w-[75%] md:w-100 md:table-cell lg:w-200">Supplier</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 w-50 hidden xl:table-cell">Delivery Date</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 hidden lg:table-cell">Total Cost</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 pr-5 rounded-tr-md lg:w-50"></th>
+            <section class="col-span-full rounded-md h-full border border-gray-400/40 overflow-hidden">
+                <div class="max-h-full h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-secondary rounded-b-lg">
+                    <table class="w-full text-sm border-collapse relative">
+                        <thead>
+                            <tr>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 rounded-tl-md md:table-cell">Delivery Number</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 hidden w-[55%] sm:w-[75%] md:w-100 md:table-cell lg:w-200">Supplier</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 w-50 hidden xl:table-cell">Delivery Date</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 hidden lg:table-cell">Total Cost</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 pr-5 rounded-tr-md lg:w-50"></th>
                             </tr>
                         </thead>
-                        <tbody class="text-sm">
-                            <!-- Normal Rows -->
+                        <tbody id="tableBody" class="divide-y divide-slate-100">
                             <tr class="h-1 border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
                                 <td class="max-w-[0] truncate py-4 pl-5 font-semibold text-gray-900">
                                     DL-2026-090
@@ -635,34 +634,9 @@
                                     </button>
                                 </td>
                             </tr>
-                            <tr class="h-1 border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
-                                <td class="max-w-[0] truncate py-4 pl-5 font-semibold text-gray-900">
-                                    DL-2026-089
-                                </td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">
-                                    <div>
-                                        <p class="truncate font-medium text-gray-900 ">VIP Pharma Supplies</p>
-                                    </div>
-                                </td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden xl:table-cell text-gray-600">
-                                    Aug 22, 2026
-                                </td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden lg:table-cell font-bold text-gray-900">
-                                    ₱24,500.00
-                                </td>
-                                <td class="max-w-[0] truncate py-4 pl-5 pr-5">
-                                    <button class="viewDetailBtn bg-primary hover:bg-primary/90 text-white rounded-md flex items-center gap-1 px-3 py-2 cursor-pointer transition-colors text-xs font-medium">
-                                        <svg class="lucide lucide-eye size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
-                                            <circle cx="12" cy="12" r="3" />
-                                        </svg>
-                                        <p class="hidden md:block">View details</p>
-                                    </button>
-                                </td>
-                            </tr>
 
-                            <!-- No Stock Left -->
-                            <tr class="h-1 colspan-full">
+                            <!-- Empty Row -->
+                            <tr id="emptyDeliveryRecordRow" class="hidden colspan-full">
                                 <td colspan="7">
                                     <div class="w-full h-full flex flex-col items-center justify-center gap-2 p-15 text-center">
                                         <img class="size-35 lg:size-100" src="../../assets/image/empty_delivery.png" alt="">
@@ -672,8 +646,8 @@
                                     </div>
                                 </td>
                             </tr>
-                            <!-- No Stock Left -->
-                            <tr class="h-1 colspan-full">
+
+                            <tr id="emptySearchResultRow" class="hidden colspan-full">
                                 <td colspan="7">
                                     <div class="w-full h-full flex flex-col items-center justify-center gap-2 p-15 text-center">
                                         <img class="size-35 lg:size-100" src="../../assets/image/no_result.png" alt="">
@@ -681,11 +655,6 @@
                                         <p class="text-gray-600/80">There is no results that matches what you're searching. Please try again.</p>
                                     </div>
                                 </td>
-                            </tr>
-
-                            <!-- Invisible Row -->
-                            <tr class="h-auto col-span-full">
-                                <td colspan="3"></td>
                             </tr>
                         </tbody>
                     </table>

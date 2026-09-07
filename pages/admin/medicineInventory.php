@@ -509,23 +509,22 @@
             </section>
 
             <!-- Table records -->
-            <section class="col-span-full flex flex-col w-full h-full gap-2">
-                <div class="border border-secondary/30 rounded-lg w-full h-full">
-                    <table class="table-auto w-full h-full">
-                        <thead class="">
-                            <tr class="bg-secondary text-white">
-                                <th class="text-start font-semibold text-md py-4 pl-5 w-10 rounded-tl-md">ID</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 w-[55%] sm:w-[75%] lg:w-70">Medicine Name</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 w-50 hidden xl:table-cell">Supplier</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 hidden xl:table-cell">Batch Number</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 hidden lg:table-cell">Expirey Date</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 hidden lg:table-cell">Status</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 hidden lg:table-cell">Stock Left</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 pr-5 rounded-tr-md lg:w-50"></th>
+            <section class="col-span-full rounded-md h-full border border-gray-400/40 overflow-hidden">
+                <div class="max-h-full h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-secondary rounded-b-lg">
+                    <table class="w-full text-sm border-collapse relative">
+                        <thead>
+                            <tr>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 w-10 rounded-tl-md">ID</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 w-[55%] sm:w-[75%] lg:w-70">Medicine Name</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 w-50 hidden xl:table-cell">Supplier</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 hidden xl:table-cell">Batch Number</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 hidden lg:table-cell">Expirey Date</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 hidden lg:table-cell">Status</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 hidden lg:table-cell">Stock Left</th>
+                                <th class="text-start text-white sticky top-0 bg-secondary font-semibold text-md py-4 pl-5 pr-5 rounded-tr-md lg:w-50"></th>
                             </tr>
                         </thead>
-                        <tbody class="text-sm">
-                            <!-- Normal Rows -->
+                        <tbody id="tableBody" class="divide-y divide-slate-100">
                             <tr class="h-1">
                                 <td class="max-w-[0] truncate py-4 pl-5">1</td>
                                 <td class="max-w-[0] truncate py-4 pl-5">
@@ -607,38 +606,24 @@
                                     </button>
                                 </td>
                             </tr>
-
-                            <!-- No Stock Left -->
-                            <tr class="h-1 colspan-full">
+                            <tr id="emptyDeliveryRecordRow" class="hidden colspan-full">
                                 <td colspan="7">
                                     <div class="w-full h-full flex flex-col items-center justify-center gap-2 p-15 text-center">
-                                        <img class="size-35 lg:size-100" src="../../assets/image/empty_stock.png" alt="">
-                                        <p class="font-semibold">Oops! There is no stock left here...</p>
-                                        <p class="text-gray-600/80">There is no stock left here, please create orders to fill up the inventory.</p>
-                                        <a href=" ../admin/orderManagement.php" class="bg-primary px-4 py-2 rounded-md text-white cursor-pointer">Order Stocks</a>
+                                        <img class="size-35 lg:size-100" src="../../assets/image/empty_delivery.png" alt="">
+                                        <p class="font-semibold">Oops! There are no deliveries arrived here...</p>
+                                        <p class="text-gray-600/80">There are no recorded delivery record here.</p>
+                                        <a href="../admin/orderManagement.php" button class="bg-primary px-4 py-2 rounded-md text-white cursor-pointer">Receive Delivery</a>
                                     </div>
                                 </td>
                             </tr>
-                            <!-- No Stock Left -->
-                            <tr class="h-1 colspan-full">
+
+                            <tr id="emptySearchResultRow" class="hidden colspan-full">
                                 <td colspan="7">
                                     <div class="w-full h-full flex flex-col items-center justify-center gap-2 p-15 text-center">
                                         <img class="size-35 lg:size-100" src="../../assets/image/no_result.png" alt="">
                                         <p class="font-semibold">Oops! Can't find what you need.</p>
                                         <p class="text-gray-600/80">There is no results that matches what you're searching. Please try again.</p>
                                     </div>
-                                </td>
-                            </tr>
-
-
-
-
-                            <!-- Invisible Row -->
-                            <tr class="h-auto col-span-full">
-                                <td colspan="7">
-                                    <section class="p-3 text-center text-gray-400">
-                                        <p>End of Results</p>
-                                    </section>
                                 </td>
                             </tr>
                         </tbody>
