@@ -1,10 +1,3 @@
-<?php
-include("../../model/Db.php");
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -186,26 +179,39 @@ include("../../model/Db.php");
         </aside>
 
         <!-- Main Content -->
-        <section class="w-full h-dvh p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[auto_1fr_4fr_4fr] gap-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-sendary">
+        <section class="w-full h-dvh p-5 grid grid-cols-1 grid-rows-auto md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[auto_auto_350px_auto] gap-3 overflow-y-scroll scrollbar-thin scrollbar-thumb-sendary">
             <!-- Header -->
-            <section class="col-span-full flex items-center justify-between">
-                <section class="flex items-center gap-3">
-                    <p class="col-span-full flex items-center text-lg font-medium md:text-2xl">Dashboard</p>
+            <section class="col-span-full w-full flex items-center justify-between">
+                <p class="col-span-full flex items-center text-lg font-medium md:text-2xl">Dashboard</p>
+                <section class="flex items-center justify-end gap-3 w-full">
+                    <section class="relative">
+                        <button id="toggleDateRangeFilterBtn" class="flex items-center gap-1 bg-secondary px-3 py-2 rounded-full text-white cursor-pointer">
+                            <p class="hidden sm:block">Date Range</p>
+                            <svg class="lucide lucide-funnel size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+                            </svg>
+                        </button>
+                        <section id="dashboardDateRangeFilter" class="hidden opacity-0 absolute top-auto right-0 w-50 h-fit flex flex-col gap-2 overflow-scroll h-fit p-3 mt bg-gray-50 rounded-lg mt-2 border border-gray-200 scrollbar-none z-20">
+                            <p id="" class="cursor-pointer hover:bg-gray-200 p-3 rounded-sm transition duration-100">Yesterday</p>
+                            <p id="" class="cursor-pointer hover:bg-gray-200 p-3 rounded-sm transition duration-100">Last Week</p>
+                            <p id="" class="cursor-pointer hover:bg-gray-200 p-3 rounded-sm transition duration-100">Last Month</p>
+                            <p id="" class="cursor-pointer hover:bg-gray-200 p-3 rounded-sm transition duration-100">Last Year</p>
+                        </section>
+                    </section>
+                    <button id="openSidebarBtn" class="bg-primary p-1 size-10 flex items-center justify-center text-white rounded-md lg:hidden">
+                        <svg class="lucide lucide-menu-icon lucide-menu size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 5h16" />
+                            <path d="M4 12h16" />
+                            <path d="M4 19h16" />
+                        </svg>
+                    </button>
                 </section>
-
-                <button id="openSidebarBtn" class="bg-primary p-1 size-10 flex items-center justify-center text-white rounded-md lg:hidden">
-                    <svg class="lucide lucide-menu-icon lucide-menu size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 5h16" />
-                        <path d="M4 12h16" />
-                        <path d="M4 19h16" />
-                    </svg>
-                </button>
             </section>
 
-            <!-- Daily Sales -->
-            <section class="col-span-full border border-gray-400/30 rounded-lg p-3 md:col-span-1">
+            <!-- Gross Sales -->
+            <section class="col-span-full border border-gray-400/30 rounded-lg p-3 md:col-span-1 flex flex-col gap-2">
                 <section class="flex items-center w-full justify-between">
-                    <p class="text-gray-500">Daily Sales</p>
+                    <p class="text-gray-500">Gross Sales Today</p>
                     <button id="toggleToolTipMessageBtn1" class="toggleToolTipMessageBtn cursor-pointer relative">
                         <svg class="lucide lucide-info-icon lucide-info size-5 md:size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10" />
@@ -221,13 +227,29 @@ include("../../model/Db.php");
                 <section class="flex items-center gap-3">
                     <p class="text-3xl font-medium">₱1,294</p>
                 </section>
+                <section>
+                    <section class="text-xs w-fit flex items-center text-green-600 gap-1">
+                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 7h6v6" />
+                            <path d="m22 7-8.5 8.5-5-5L2 17" />
+                        </svg>
+                        <p><span>12</span>% Higher than yesterday</p>
+                    </section>
+                    <section class="text-xs w-fit flex items-center gap-1 text-red-700">
+                        <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 17h6v-6" />
+                            <path d="m22 17-8.5-8.5-5 5L2 7" />
+                        </svg>
+                        <p><span>12</span>% Lower than yesterday</p>
+                    </section>
+                </section>
             </section>
 
-            <!-- Monthly Sales -->
-            <section class="col-span-full border border-gray-400/30 rounded-lg p-3 md:col-span-1">
+            <!-- Net Revenue -->
+            <section class="col-span-full border border-gray-400/30 rounded-lg p-3 md:col-span-1 flex flex-col gap-2">
                 <section class="flex items-center w-full justify-between">
-                    <p class="text-gray-500">Monthly Total Sales</p>
-                    <button id="toggleToolTipMessageBtn2" class="toggleToolTipMessageBtn cursor-pointer relative">
+                    <p class="text-gray-500">Net Revenue Today</p>
+                    <button id="toggleToolTipMessageBtn1" class="toggleToolTipMessageBtn cursor-pointer relative">
                         <svg class="lucide lucide-info-icon lucide-info size-5 md:size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10" />
                             <path d="M12 16v-4" />
@@ -235,20 +257,36 @@ include("../../model/Db.php");
                         </svg>
                         <!-- Pop up information text -->
                         <section class="hidden absolute right-0 mt-1 w-50 bg-blue-100 border border-primary/40 rounded-lg p-2">
-                            <p class="text-sm text-dark-blue">This is the total amount of sales earned for the whole month.</p>
+                            <p class="text-sm text-dark-blue">This is the total amount of sales earned for today.</p>
                         </section>
                     </button>
                 </section>
                 <section class="flex items-center gap-3">
-                    <p class="text-3xl font-medium">₱40,294</p>
+                    <p class="text-3xl font-medium">₱1,294</p>
+                </section>
+                <section>
+                    <section class="text-xs w-fit flex items-center text-green-600 gap-1">
+                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 7h6v6" />
+                            <path d="m22 7-8.5 8.5-5-5L2 17" />
+                        </svg>
+                        <p><span>12</span>% Higher than yesterday</p>
+                    </section>
+                    <section class="text-xs w-fit flex items-center gap-1 text-red-700">
+                        <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 17h6v-6" />
+                            <path d="m22 17-8.5-8.5-5 5L2 7" />
+                        </svg>
+                        <p><span>12</span>% Lower than yesterday</p>
+                    </section>
                 </section>
             </section>
 
             <!-- Active Stock Values -->
-            <section class="col-span-full border border-gray-400/30 rounded-lg p-3 md:col-span-1">
+            <section class="col-span-full border border-gray-400/30 rounded-lg p-3 md:col-span-1 flex flex-col gap-2">
                 <section class="flex items-center w-full justify-between">
-                    <p class="text-gray-500">Active Stock Values</p>
-                    <button id="toggleToolTipMessageBtn3" class="toggleToolTipMessageBtn cursor-pointer relative">
+                    <p class="text-gray-500">Active Stock Value</p>
+                    <button id="toggleToolTipMessageBtn1" class="toggleToolTipMessageBtn cursor-pointer relative">
                         <svg class="lucide lucide-info-icon lucide-info size-5 md:size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10" />
                             <path d="M12 16v-4" />
@@ -256,14 +294,29 @@ include("../../model/Db.php");
                         </svg>
                         <!-- Pop up information text -->
                         <section class="hidden absolute right-0 mt-1 w-50 bg-blue-100 border border-primary/40 rounded-lg p-2">
-                            <p class="text-sm text-dark-blue">This is the total amount of in-stock value.</p>
+                            <p class="text-sm text-dark-blue">This is the total amount of sales earned for today.</p>
                         </section>
                     </button>
                 </section>
                 <section class="flex items-center gap-3">
-                    <p class="text-3xl font-medium">₱10,294</p>
+                    <p class="text-3xl font-medium">₱1,294</p>
                 </section>
-
+                <section>
+                    <section class="text-xs w-fit flex items-center text-green-600 gap-1">
+                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 7h6v6" />
+                            <path d="m22 7-8.5 8.5-5-5L2 17" />
+                        </svg>
+                        <p><span>12</span>% Higher than yesterday</p>
+                    </section>
+                    <section class="text-xs w-fit flex items-center gap-1 text-red-700">
+                        <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 17h6v-6" />
+                            <path d="m22 17-8.5-8.5-5 5L2 7" />
+                        </svg>
+                        <p><span>12</span>% Lower than yesterday</p>
+                    </section>
+                </section>
             </section>
 
             <!-- Pending Orders -->
@@ -292,231 +345,228 @@ include("../../model/Db.php");
                 </section> -->
             </section>
 
-            <!-- Low Stock List -->
-            <section class="col-span-full flex flex-col w-full h-fit gap-2 lg:col-span-2">
-                <section class="flex items-center w-full justify-between">
-                    <p class="text-md text-gray-500 text-lg font-medium">Low Stock List</p>
+            <!-- Top Charts -->
+            <section class="grid col-span-full grid-cols-1 gap-3 md:grid-cols-3 mt-5">
+                <!-- Top Selling Medicine List (5) -->
+                <section class="col-span-1 flex flex-col gap-2 border border-gray-300 rounded-lg overflow-hidden">
+                    <section class="flex items-center justify-between bg-secondary px-4 py-3 text-white">
+                        <p class="font-semibold">Top 5 Selling Medicine</p>
+                        <a href="" class="text-xs">View all</a>
+                    </section>
+                    <section id="topSellingMedicineList" class="w-full h-full px-4 flex flex-col divide-y divide-gray-300">
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <p class="grow">Paracetamol 500mg</p>
+                            <p class="text-xs text-gray-500">450 Sold</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <p class="grow">Amoxicillin 250mg</p>
+                            <p class="text-xs text-gray-500">310 Sold</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <p class="grow">Biogesic 500mg</p>
+                            <p class="text-xs text-gray-500">285 Sold</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <p class="grow">Mefenamic Acid 500mg</p>
+                            <p class="text-xs text-gray-500">190 Sold</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <p class="grow">Cetirizine 10mg</p>
+                            <p class="text-xs text-gray-500">125 Sold</p>
+                        </section>
+                    </section>
                 </section>
-                <div class="border border-gray-400/30 rounded-lg w-full h-full">
-                    <table class="table-auto w-full h-full">
-                        <thead class="">
-                            <tr class="bg-secondary">
-                                <th class="text-white text-start rounded-tl-md py-3 w-15  font-bold"></th>
-                                <th class="text-white text-start py-3 font-bold">Medicine Name</th>
-                                <th class="text-white text-start rounded-tr-md py-3 w-1/4  font-bold">Stock Left</th>
-                            </tr>
-                        </thead>
-                        <tbody class="">
-                            <tr class="h-1 ">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2 max-w-[0] truncate">a;sdjasd;aksd;kas;d;laskd;Malcolm Lockyer</td>
-                                <td class="max-w-[0] truncate py-2">8</td>
-                            </tr>
-                            <tr class="h-1 bg-secondary/20">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2">The Eagles</td>
-                                <td class="max-w-[0] truncate py-2">1</td>
-                            </tr>
-                            <tr class="h-1 ">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2">Earth, Wind, and Fire</td>
-                                <td class="max-w-[0] truncate py-2">3</td>
-                            </tr>
-                            <tr class="h-1 bg-secondary/20">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2">Earth, Wind, and Fire</td>
-                                <td class="max-w-[0] truncate py-2">12</td>
-                            </tr>
-                            <tr class="h-1 ">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2">Earth, Wind, and Fire</td>
-                                <td class="max-w-[0] truncate py-2">1</td>
-                            </tr>
 
-                            <!-- Invisible Row -->
-                            <tr class="h-auto col-span-full">
-                                <td colspan="3"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <!-- Low Stock Alerts (5) -->
+                <section class="col-span-1 flex flex-col gap-2 border border-gray-300 rounded-lg overflow-hidden">
+                    <section class="flex items-center justify-between bg-secondary px-4 py-3 text-white">
+                        <p class="font-semibold">Low Stocks Alert</p>
+                        <a href="" class="text-xs">View all</a>
+                    </section>
+                    <section id="topSellingMedicineList" class="w-full h-full px-4 flex flex-col divide-y divide-gray-300">
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-red-600"></div>
+                            <section class="grow">
+                                <p class="">Amoxicillin 500mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-003</p>
+                            </section>
+                            <p class="text-red-600">3 left</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-red-600"></div>
+                            <section class="grow">
+                                <p class="">Metformin 500mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-012</p>
+                            </section>
+                            <p class="text-red-600">5 left</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-red-600"></div>
+                            <section class="grow">
+                                <p class="">Amlodipine 5mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-008</p>
+                            </section>
+                            <p class="text-red-600">8 left</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-orange-400"></div>
+                            <section class="grow">
+                                <p class="">Loperamide 2mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-019</p>
+                            </section>
+                            <p class="text-orange-400">14 left</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-orange-400"></div>
+                            <section class="grow">
+                                <p class="">Losartan 50mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-021</p>
+                            </section>
+                            <p class="text-orange-400">18 left</p>
+                        </section>
+                    </section>
+                </section>
+
+                <!-- Expiring Soon (5) -->
+                <section class="col-span-1 flex flex-col gap-2 border border-gray-300 rounded-lg overflow-hidden">
+                    <section class="flex items-center justify-between bg-secondary px-4 py-3 text-white">
+                        <p class="font-semibold">Expiring Soon</p>
+                        <a href="" class="text-xs">View all</a>
+                    </section>
+                    <section id="topSellingMedicineList" class="w-full h-full px-4 flex flex-col divide-y divide-gray-300">
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-red-600"></div>
+                            <section class="grow">
+                                <p class="">Amoxicillin 500mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-003</p>
+                            </section>
+                            <p class="text-red-600">3 days left</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-red-600"></div>
+                            <section class="grow">
+                                <p class="">Metformin 500mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-012</p>
+                            </section>
+                            <p class="text-red-600">5 days left</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-red-600"></div>
+                            <section class="grow">
+                                <p class="">Amlodipine 5mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-008</p>
+                            </section>
+                            <p class="text-red-600">8 days left</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-orange-400"></div>
+                            <section class="grow">
+                                <p class="">Loperamide 2mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-019</p>
+                            </section>
+                            <p class="text-orange-400">14 days left</p>
+                        </section>
+                        <section class="flex gap-2 py-2 items-center justify-center py-1 grow">
+                            <div class="size-2 rounded-full bg-orange-400"></div>
+                            <section class="grow">
+                                <p class="">Losartan 50mg</p>
+                                <p class="text-[smaller] text-gray-500">BATCH-2026-021</p>
+                            </section>
+                            <p class="text-orange-400">18 days left</p>
+                        </section>
+                    </section>
+                </section>
             </section>
 
-            <!-- Near Expiration List -->
-            <section class="col-span-full flex flex-col w-full h-fit gap-2 lg:col-span-2">
-                <section class="flex items-center w-full justify-between">
-                    <p class="text-md text-gray-500 text-lg font-medium">Stocks Near Expirations</p>
+            <!-- Top 5 Customer Chart -->
+            <section class="grid col-span-full grid-cols-1 gap-4 mt-5 md:grid-cols-4">
+                <section class="col-span-1 h-80 relative flex items-center justify-center md:col-span-2 lg:col-span-1">
+                    <canvas id="dashboardPaymentMethodPieChart"></canvas>
                 </section>
-                <div class="border border-gray-400/30 rounded-lg w-full h-full">
-                    <table class="table-auto w-full h-full">
-                        <thead class="">
-                            <tr class="bg-secondary">
-                                <th class="text-white text-start rounded-tl-md py-3 w-15  font-bold"></th>
-                                <th class="text-white text-start py-3 font-bold">Batch Number</th>
-                                <th class="text-white text-start rounded-tr-md py-3  font-bold">Expirey Date</th>
-                            </tr>
-                        </thead>
-                        <tbody class="">
-                            <tr class="h-1 ">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2">Malcolm Lockyer</td>
-                                <td class="max-w-[0] truncate py-2">8</td>
-                                <td class="max-w-[0] truncate py-2">8</td>
-                            </tr>
-                            <tr class="h-1 bg-secondary/20">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2">The Eagles</td>
-                                <td class="max-w-[0] truncate py-2">1</td>
-                                <td class="max-w-[0] truncate py-2">1</td>
-                            </tr>
-                            <tr class="h-1 ">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2">Earth, Wind, and Fire</td>
-                                <td class="max-w-[0] truncate py-2">3</td>
-                                <td class="max-w-[0] truncate py-2">3</td>
-                            </tr>
-                            <tr class="h-1 bg-secondary/20">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2">Earth, Wind, and Fire</td>
-                                <td class="max-w-[0] truncate py-2">12</td>
-                                <td class="max-w-[0] truncate py-2">12</td>
-                            </tr>
-                            <tr class="h-1 ">
-                                <td class="py-2 flex w-full h-full items-center justify-center text-orange-400">
-                                    <svg class="lucide lucide-triangle-alert-icon lucide-triangle-alert size-5" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
-                                        <path d="M12 9v4" />
-                                        <path d="M12 17h.01" />
-                                    </svg>
-                                </td>
-                                <td class="max-w-[0] truncate py-2">Earth, Wind, and Fire</td>
-                                <td class="max-w-[0] truncate py-2">1</td>
-                                <td class="max-w-[0] truncate py-2">1</td>
-                            </tr>
 
-                            <!-- Invisible Row -->
-                            <tr class="h-auto col-span-full">
-                                <td colspan="3"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <section class="col-span-1 md:col-span-2 lg:col-span-3">
+                    <section class="col-span-full rounded-md h-full border border-gray-400/40 overflow-hidden">
+                        <div class="max-h-full h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-secondary rounded-b-lg">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr>
+                                        <th class="sticky top-0 z-10 bg-secondary text-white text-start font-semibold text-md py-4 pl-5 rounded-tl-md md:table-cell w-full sm:w-50">Transaction Number</th>
+                                        <th class="sticky top-0 z-10 bg-secondary text-white text-start font-semibold text-md py-4 pl-5 hidden sm:table-cell sm:w-80 md:w-110 lg:w-100 xl:w-120 2xl:w-180">Cashier</th>
+                                        <th class="sticky top-0 z-10 bg-secondary text-white text-start font-semibold text-md py-4 pl-5 w-50 hidden xl:table-cell">Customer Type</th>
+                                        <th class="sticky top-0 z-10 bg-secondary text-white text-start font-semibold text-md py-4 pl-5 hidden lg:table-cell">Total Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody" class="divide-y divide-slate-100 h-full">
+                                    <tr class="bg-secondary/10 transition-colors border-b border-gray-100">
+                                        <td class="py-4 pl-5 font-medium text-dark-blue">TXN-2026-00842</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden sm:table-cell truncate max-w-0">Renzo Tolentino</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden xl:table-cell">Regular</td>
+                                        <td class="py-4 pl-5 font-semibold text-gray-900 hidden lg:table-cell">₱1,294.00</td>
+                                    </tr>
+
+                                    <tr class="transition-colors border-b border-gray-100">
+                                        <td class="py-4 pl-5 font-medium text-dark-blue">TXN-2026-00841</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden sm:table-cell truncate max-w-0">Maria Santos</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden xl:table-cell">Senior Citizen</td>
+                                        <td class="py-4 pl-5 font-semibold text-gray-900 hidden lg:table-cell">₱845.50</td>
+                                    </tr>
+
+                                    <tr class="bg-secondary/10 transition-colors border-b border-gray-100">
+                                        <td class="py-4 pl-5 font-medium text-dark-blue">TXN-2026-00840</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden sm:table-cell truncate max-w-0">Renzo Tolentino</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden xl:table-cell">Student</td>
+                                        <td class="py-4 pl-5 font-semibold text-gray-900 hidden lg:table-cell">₱312.00</td>
+                                    </tr>
+
+                                    <tr class="transition-colors border-b border-gray-100">
+                                        <td class="py-4 pl-5 font-medium text-dark-blue">TXN-2026-00841</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden sm:table-cell truncate max-w-0">Maria Santos</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden xl:table-cell">Senior Citizen</td>
+                                        <td class="py-4 pl-5 font-semibold text-gray-900 hidden lg:table-cell">₱845.50</td>
+                                    </tr>
+
+                                    <tr class="bg-secondary/10 transition-colors border-b border-gray-100">
+                                        <td class="py-4 pl-5 font-medium text-dark-blue">TXN-2026-00840</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden sm:table-cell truncate max-w-0">Renzo Tolentino</td>
+                                        <td class="py-4 pl-5 text-gray-600 hidden xl:table-cell">Student</td>
+                                        <td class="py-4 pl-5 font-semibold text-gray-900 hidden lg:table-cell">₱312.00</td>
+                                    </tr>
+
+                                    <tr id="emptySearchResultRow" class="hidden colspan-full">
+                                        <td colspan="7">
+                                            <div class="w-full h-full flex flex-col items-center justify-center gap-2 p-15 text-center">
+                                                <p class="text-gray-600/80">No results to show.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </section>
             </section>
 
-            <!-- Top Selling Medicine -->
-            <section class="col-span-full flex flex-col w-full h-fit gap-2">
-                <section class="flex items-center w-full justify-between">
-                    <p class="text-md text-gray-500 text-lg font-medium">Top Selling Medicine</p>
-                </section>
-                <div class="border border-gray-400/30 rounded-lg w-full h-full">
-                    <table class="table-auto w-full h-full">
-                        <thead class="">
-                            <tr class="bg-secondary">
-                                <th class="text-start rounded-tl-md py-3 px-2 text-white font-bold">Medicine Name</th>
-                                <th class="text-start py-3 text-white font-bold">Batch Number</th>
-                                <th class="text-start text-white font-bold">Units Sold</th>
-                                <th class="text-start rounded-tr-md py-3 text-white font-bold">Total Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="h-1 ">
-                                <td class="max-w-[0] truncate py-2 pl-2">Biogesic</td>
-                                <td class="max-w-[0] truncate py-2">PSF-1023</td>
-                                <td class="max-w-[0] truncate py-2">1961</td>
-                                <td class="max-w-[0] truncate py-2">₱19,410</td>
-                            </tr>
-                            <tr class="h-1 bg-secondary/20">
-                                <td class="max-w-[0] truncate py-2 pl-2">Biogesic</td>
-                                <td class="max-w-[0] truncate py-2">PSF-1023</td>
-                                <td class="max-w-[0] truncate py-2">1961</td>
-                                <td class="max-w-[0] truncate py-2">₱19,410</td>
-                            </tr>
-                            <tr class="h-1 ">
-                                <td class="max-w-[0] truncate py-2 pl-2">Biogesic</td>
-                                <td class="max-w-[0] truncate py-2">PSF-1023</td>
-                                <td class="max-w-[0] truncate py-2">1961</td>
-                                <td class="max-w-[0] truncate py-2">₱19,410</td>
-                            </tr>
-                            <tr class="h-1 bg-secondary/20">
-                                <td class="max-w-[0] truncate py-2 pl-2">Biogesic</td>
-                                <td class="max-w-[0] truncate py-2">PSF-1023</td>
-                                <td class="max-w-[0] truncate py-2">1961</td>
-                                <td class="max-w-[0] truncate py-2">₱19,410</td>
-                            </tr>
-                            <tr class="h-1 ">
-                                <td class="max-w-[0] truncate py-2 pl-2">Biogesic</td>
-                                <td class="max-w-[0] truncate py-2">PSF-1023</td>
-                                <td class="max-w-[0] truncate py-2">1961</td>
-                                <td class="max-w-[0] truncate py-2">₱19,410</td>
-                            </tr>
-
-                            <!-- Invisible Row -->
-                            <tr class="h-auto col-span-full">
-                                <td colspan="3"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
         </section>
     </main>
 
     <script src="../../js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../js/dashboardPaymentMethodPieChart.js"></script>
     <script>
+        /*
+        ==============================================================================
+        MAIN FUNCTIONS 
+         - Functions that are needed/required and do specific things 
+        ==============================================================================
+        */
+
+
+        /*
+        ==============================================================================
+        TOGGLE FUNCTIONS 
+        - Functions just show/hide elements
+        ==============================================================================
+         */
         $("#sidebar ").on("mouseenter", function() {
             $("#sidebar .sidebar-hidden-item").removeClass("lg:hidden").show(200);
             $("#sidebar a").removeClass("lg:w-fit");
@@ -535,6 +585,10 @@ include("../../model/Db.php");
             $("#sidebar").slideUp();
         });
 
+        $("#toggleDateRangeFilterBtn").on("click", function() {
+            $("#dashboardDateRangeFilter").toggleClass("hidden").toggleClass("opacity-0");
+        })
+
         let tooltipMessageToggleBtnCount = $(".toggleToolTipMessageBtn").length;
 
         for (let index = 0; index < tooltipMessageToggleBtnCount; index++) {
@@ -549,6 +603,13 @@ include("../../model/Db.php");
             })
 
         }
+
+        /*
+        ==============================================================================
+        HELPER FUNCTIONS, ADDITIONAL FUNCTIONS & EVENT LISTENER FUNCTIONS
+        - Functions to help reduce redundancy
+        ==============================================================================
+        */
     </script>
 </body>
 

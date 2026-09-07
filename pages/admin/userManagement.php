@@ -577,6 +577,20 @@
 
     <script src="../../js/jquery.min.js"></script>
     <script>
+        /*
+        ==============================================================================
+        MAIN FUNCTIONS 
+         - Functions that are needed/required and do specific things 
+        ==============================================================================
+        */
+
+
+        /*
+        ==============================================================================
+        TOGGLE FUNCTIONS 
+        - Functions just show/hide elements
+        ==============================================================================
+         */
         $("#sidebar ").on("mouseenter", function() {
             $("#sidebar .sidebar-hidden-item").removeClass("lg:hidden").show(200);
             $("#sidebar a").removeClass("lg:w-fit");
@@ -608,6 +622,13 @@
                 }, 5000);
             })
         }
+
+        /*
+        ==============================================================================
+        HELPER FUNCTIONS, ADDITIONAL FUNCTIONS & EVENT LISTENER FUNCTIONS
+        - Functions to help reduce redundancy
+        ==============================================================================
+        */
     </script>
 </body>
 

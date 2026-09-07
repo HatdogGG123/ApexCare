@@ -404,8 +404,6 @@
     <!-- Main Content -->
     <main class="w-full h-fit min-h-full grid grid-cols-1 divide-x divide-primary/20 lg:grid-cols-[auto_1fr]">
         <!-- Sidebar -->
-        <!-- Sidebar -->
-
         <aside id="sidebar" class="hidden absolute z-50 w-full h-fit bg-secondary text-white p-5 flex flex-col gap-3 divide-y divide-primary/20 lg:block lg:static lg:h-dvh lg:bg-white lg:text-dark-blue overflow-y-scroll scrollbar-none">
 
             <!-- Logo Container -->
@@ -551,7 +549,7 @@
         </aside>
 
         <!-- Main Content -->
-        <section class="w-full h-dvh p-5 px-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-3 lg:grid-rows-[auto_auto_12fr] overflow-y-scroll scrollbar-thin scrollbar-thumb-sendary">
+        <section class="w-full h-dvh p-5 px-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-3 lg:grid-rows-[auto_auto_12fr] overflow-y-scroll scrollbar-thin scrollbar-thumb-secondary">
             <!-- Header -->
             <section class="col-span-full flex items-center justify-between">
                 <section class="flex items-center gap-3">
@@ -698,6 +696,20 @@
 
     <script src="../../js/jquery.min.js"></script>
     <script>
+        /*
+        ==============================================================================
+        MAIN FUNCTIONS 
+         - Functions that are needed/required and do specific things 
+        ==============================================================================
+        */
+
+
+        /*
+        ==============================================================================
+        TOGGLE FUNCTIONS 
+        - Functions just show/hide elements
+        ==============================================================================
+         */
         $("#sidebar ").on("mouseenter", function() {
             $("#sidebar .sidebar-hidden-item").removeClass("lg:hidden").show(200);
             $("#sidebar a").removeClass("lg:w-fit");
@@ -729,6 +741,14 @@
                 }, 5000);
             })
         }
+
+
+        /*
+        ==============================================================================
+        HELPER FUNCTIONS, ADDITIONAL FUNCTIONS & EVENT LISTENER FUNCTIONS
+        - Functions to help reduce redundancy
+        ==============================================================================
+        */
     </script>
 </body>
 

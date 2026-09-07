@@ -178,7 +178,7 @@
         </aside>
 
         <!-- Main Content -->
-        <section class="w-full h-dvh p-5 grid grid-cols-1 gap-8  md:grid-cols-2 lg:grid-cols-4 xl:gap-3 grid-rows-auto lg:grid-rows-[auto_auto_auto_auto_auto] lg:grid-rows-[auto_auto_100%_100%_100%_100%_auto] overflow-y-scroll scrollbar-thin scrollbar-thumb-sendary">
+        <section class="w-full h-dvh p-5 grid grid-cols-1 gap-8  md:grid-cols-2 lg:grid-cols-4 xl:gap-3 grid-rows-auto lg:grid-rows-[auto_auto_auto_auto_auto] lg:grid-rows-[auto_auto_100%_100%_100%_100%_auto] overflow-y-scroll scrollbar-thin scrollbar-thumb-secondary">
             <!-- Header -->
             <section class="col-span-full flex items-center justify-between">
                 <section class="flex items-center gap-3">
@@ -205,19 +205,21 @@
                     </section>
 
                     <!-- Display either one of the report -->
-                    <section class="text-xs w-fit flex items-center gap-1 px-5 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
-                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 7h6v6" />
-                            <path d="m22 7-8.5 8.5-5-5L2 17" />
-                        </svg>
-                        <p><span>12</span>% Higher than yesterday</p>
-                    </section>
-                    <section class="text-xs w-fit flex items-center gap-1 px-5 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
-                        <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 17h6v-6" />
-                            <path d="m22 17-8.5-8.5-5 5L2 7" />
-                        </svg>
-                        <p><span>12</span>% Lower than yesterday</p>
+                    <section>
+                        <section class="text-xs w-fit flex items-center text-green-600 gap-1">
+                            <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 7h6v6" />
+                                <path d="m22 7-8.5 8.5-5-5L2 17" />
+                            </svg>
+                            <p><span>12</span>% Higher than yesterday</p>
+                        </section>
+                        <section class="text-xs w-fit flex items-center gap-1 text-red-700">
+                            <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 17h6v-6" />
+                                <path d="m22 17-8.5-8.5-5 5L2 7" />
+                            </svg>
+                            <p><span>12</span>% Lower than yesterday</p>
+                        </section>
                     </section>
                     <section class="flex items-center gap-1 text-gray-500 mt-5">
                         <svg class="lucide lucide-arrow-left-right-icon lucide-arrow-left-right size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -230,12 +232,19 @@
                     </section>
                 </section>
 
-                <section class="bg-secondary/80 h-fit p-2 rounded-md flex flex-wrap">
-                    <button class="bg-primary px-3 py-2 rounded-lg text-white grow">Today</button>
-                    <button class="px-3 py-2 rounded-lg text-white grow">1 Day ago</button>
-                    <button class="px-3 py-2 rounded-lg text-white grow">7 Days ago</button>
-                    <button class="px-3 py-2 rounded-lg text-white grow">30 Days ago</button>
-                    <button class="px-3 py-2 rounded-lg text-white grow">60 Days ago</button>
+                <section class="relative">
+                    <button id="toggleDateRangeFilterBtn" class="flex items-center gap-1 bg-secondary px-3 py-2 rounded-full text-white cursor-pointer">
+                        <p class="hidden sm:block">Date Range</p>
+                        <svg class="lucide lucide-funnel size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
+                        </svg>
+                    </button>
+                    <section id="dashboardDateRangeFilter" class="hidden opacity-0 absolute top-auto right-0 w-50 h-fit flex flex-col gap-2 overflow-scroll h-fit p-3 mt bg-gray-50 rounded-lg mt-2 border border-gray-200 scrollbar-none z-20">
+                        <p id="" class="cursor-pointer hover:bg-gray-200 p-3 rounded-sm transition duration-100">Yesterday</p>
+                        <p id="" class="cursor-pointer hover:bg-gray-200 p-3 rounded-sm transition duration-100">Last Week</p>
+                        <p id="" class="cursor-pointer hover:bg-gray-200 p-3 rounded-sm transition duration-100">Last Month</p>
+                        <p id="" class="cursor-pointer hover:bg-gray-200 p-3 rounded-sm transition duration-100">Last Year</p>
+                    </section>
                 </section>
             </section>
 
@@ -244,19 +253,21 @@
                 <p class="text-gray-500">Overall Amount Spent</p>
                 <p class="text-2xl font-medium">₱240,091.00</p>
 
-                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
-                    <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 7h6v6" />
-                        <path d="m22 7-8.5 8.5-5-5L2 17" />
-                    </svg>
-                    <p><span>12</span>% Higher than yesterday</p>
-                </section>
-                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
-                    <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 17h6v-6" />
-                        <path d="m22 17-8.5-8.5-5 5L2 7" />
-                    </svg>
-                    <p><span>12</span>% Lower than yesterday</p>
+                <section>
+                    <section class="text-xs w-fit flex items-center text-green-600 gap-1">
+                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 7h6v6" />
+                            <path d="m22 7-8.5 8.5-5-5L2 17" />
+                        </svg>
+                        <p><span>12</span>% Higher than yesterday</p>
+                    </section>
+                    <section class="text-xs w-fit flex items-center gap-1 text-red-700">
+                        <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 17h6v-6" />
+                            <path d="m22 17-8.5-8.5-5 5L2 7" />
+                        </svg>
+                        <p><span>12</span>% Lower than yesterday</p>
+                    </section>
                 </section>
             </section>
 
@@ -264,19 +275,21 @@
             <section class="col-span-full border border-gray-400/30 rounded-lg flex flex-col gap-1 p-3 lg:col-span-2 xl:col-span-1">
                 <p class="text-gray-500">Overall Discount Given</p>
                 <p class="text-2xl font-medium">₱10,091.00</p>
-                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
-                    <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 7h6v6" />
-                        <path d="m22 7-8.5 8.5-5-5L2 17" />
-                    </svg>
-                    <p><span>12</span>% Higher than yesterday</p>
-                </section>
-                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
-                    <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 17h6v-6" />
-                        <path d="m22 17-8.5-8.5-5 5L2 7" />
-                    </svg>
-                    <p><span>12</span>% Lower than yesterday</p>
+                <section>
+                    <section class="text-xs w-fit flex items-center text-green-600 gap-1">
+                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 7h6v6" />
+                            <path d="m22 7-8.5 8.5-5-5L2 17" />
+                        </svg>
+                        <p><span>12</span>% Higher than yesterday</p>
+                    </section>
+                    <section class="text-xs w-fit flex items-center gap-1 text-red-700">
+                        <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 17h6v-6" />
+                            <path d="m22 17-8.5-8.5-5 5L2 7" />
+                        </svg>
+                        <p><span>12</span>% Lower than yesterday</p>
+                    </section>
                 </section>
             </section>
 
@@ -284,19 +297,21 @@
             <section class="col-span-full border border-gray-400/30 rounded-lg flex flex-col gap-1 p-3 lg:col-span-2 xl:col-span-1">
                 <p class="text-gray-500">Overall Profit Gained</p>
                 <p class="text-2xl font-medium text-green-600">+₱90,091.00</p>
-                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
-                    <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 7h6v6" />
-                        <path d="m22 7-8.5 8.5-5-5L2 17" />
-                    </svg>
-                    <p><span>12</span>% Higher than yesterday</p>
-                </section>
-                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
-                    <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 17h6v-6" />
-                        <path d="m22 17-8.5-8.5-5 5L2 7" />
-                    </svg>
-                    <p><span>12</span>% Lower than yesterday</p>
+                <section>
+                    <section class="text-xs w-fit flex items-center text-green-600 gap-1">
+                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 7h6v6" />
+                            <path d="m22 7-8.5 8.5-5-5L2 17" />
+                        </svg>
+                        <p><span>12</span>% Higher than yesterday</p>
+                    </section>
+                    <section class="text-xs w-fit flex items-center gap-1 text-red-700">
+                        <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 17h6v-6" />
+                            <path d="m22 17-8.5-8.5-5 5L2 7" />
+                        </svg>
+                        <p><span>12</span>% Lower than yesterday</p>
+                    </section>
                 </section>
             </section>
 
@@ -307,19 +322,21 @@
                     <div>-</div>
                     <p>₱0.00</p>
                 </div>
-                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-green-700 bg-green-100 text-green-700">
-                    <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 7h6v6" />
-                        <path d="m22 7-8.5 8.5-5-5L2 17" />
-                    </svg>
-                    <p><span>12</span>% Higher than yesterday</p>
-                </section>
-                <section class="text-xs w-fit flex items-center gap-1 px-4 py-2 rounded-full border border-red-700 bg-red-100 text-red-700">
-                    <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 17h6v-6" />
-                        <path d="m22 17-8.5-8.5-5 5L2 7" />
-                    </svg>
-                    <p><span>12</span>% Lower than yesterday</p>
+                <section>
+                    <section class="text-xs w-fit flex items-center text-green-600 gap-1">
+                        <svg class="lucide lucide-trending-up-icon lucide-trending-up size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 7h6v6" />
+                            <path d="m22 7-8.5 8.5-5-5L2 17" />
+                        </svg>
+                        <p><span>12</span>% Lower than yesterday</p>
+                    </section>
+                    <section class="text-xs w-fit flex items-center gap-1 text-red-700">
+                        <svg class="lucide lucide-trending-down-icon lucide-trending-down size-4" xmlns="http://www.w3.org/2000/svg" width="0" height="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 17h6v-6" />
+                            <path d="m22 17-8.5-8.5-5 5L2 7" />
+                        </svg>
+                        <p><span>12</span>% Higher than yesterday</p>
+                    </section>
                 </section>
             </section>
 
@@ -329,7 +346,6 @@
                 <div class="w-full"><canvas class="w-full" id="salesTrendChartContainer"></canvas></div>
             </section>
 
-
             <!-- Customer Purchase Percentage -->
             <section class="col-span-full mt-5 lg:col-span-full xl:col-span-2">
                 <p class="text-gray-500 text-lg">Sales Revenue per Customer</p>
@@ -338,86 +354,73 @@
 
 
             <!-- Top 5 Selling Medicine -->
-            <section class="col-span-full flex flex-col w-full h-full gap-2 mt-5">
-                <p class="text-gray-500 text-lg">Top 5 Selling Medicine</p>
-                <div class="border border-secondary/30 rounded-lg w-full h-fit overflow-scroll scrollbar-none">
-                    <table class="table-auto w-full h-full">
-                        <thead class="">
-                            <tr class="bg-secondary text-white">
-                                <th class="text-start font-semibold text-md py-4 pl-5 rounded-tl-md">Medicine Name</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 xl:table-cell">Sold Units</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 xl:table-cell">Revenue Amount</th>
-                                <th class="text-start font-semibold text-md py-4 pl-5 pr-5 rounded-tr-md hidden md:table-cell">Total Discount Given</th>
+            <section class="col-span-full rounded-md h-80 border border-gray-400/40 overflow-hidden">
+                <div class=" h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-secondary rounded-b-lg">
+                    <table class="w-full h-full text-sm border-collapse">
+                        <thead>
+                            <tr>
+                                <th class="sticky top-0 z-10 bg-primary text-white text-start font-semibold text-md py-4 pl-5 rounded-tl-md">Segment</th>
+                                <th class="sticky top-0 z-10 bg-primary text-white text-start font-semibold text-md py-4 pl-5 hidden sm:table-cell">Txn Count</th>
+                                <th class="sticky top-0 z-10 bg-primary text-white text-start font-semibold text-md py-4 pl-5 hidden md:table-cell">Total Spend</th>
+                                <th class="sticky top-0 z-10 bg-primary text-white text-start font-semibold text-md py-4 pl-5 hidden lg:table-cell">Avg Basket</th>
+                                <th class="sticky top-0 z-10 bg-primary text-white text-start font-semibold text-md py-4 pl-5 hidden xl:table-cell">Discount Cost</th>
+                                <th class="sticky top-0 z-10 bg-primary text-white text-start font-semibold text-md py-4 pl-5 pr-5 rounded-tr-md hidden xl:table-cell">Revenue Contributed</th>
                             </tr>
                         </thead>
-                        <tbody class="text-sm">
-                            <!-- Normal Rows -->
-                            <tr class="h-1">
-                                <td class="max-w-[0] truncate py-4 pl-5">1</td>
-                                <td class="max-w-[0] truncate py-4 pl-5">
-                                    <div>
-                                        <p class="truncate">Biogesic 500ml</p>
-                                    </div>
-                                </td>
-                                <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
-                            </tr>
-                            <tr class="h-1">
-                                <td class="max-w-[0] truncate py-4 pl-5">2</td>
-                                <td class="max-w-[0] truncate py-4 pl-5">
-                                    <div>
-                                        <p class="truncate">Biogesic 500ml</p>
-                                    </div>
-                                </td>
-                                <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
-                            </tr>
-                            <tr class="h-1">
-                                <td class="max-w-[0] truncate py-4 pl-5">3</td>
-                                <td class="max-w-[0] truncate py-4 pl-5">
-                                    <div>
-                                        <p class="truncate">Biogesic 500ml</p>
-                                    </div>
-                                </td>
-                                <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
-                            </tr>
-                            <tr class="h-1">
-                                <td class="max-w-[0] truncate py-4 pl-5">4</td>
-                                <td class="max-w-[0] truncate py-4 pl-5">
-                                    <div>
-                                        <p class="truncate">Biogesic 500ml</p>
-                                    </div>
-                                </td>
-                                <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
-                            </tr>
-                            <tr class="h-1">
-                                <td class="max-w-[0] truncate py-4 pl-5">5</td>
-                                <td class="max-w-[0] truncate py-4 pl-5">
-                                    <div>
-                                        <p class="truncate">Biogesic 500ml</p>
-                                    </div>
-                                </td>
-                                <td class="max-w-[0] truncate py-4 pl-5 xl:table-cell">₱100.00</td>
-                                <td class="max-w-[0] truncate py-4 pl-5 hidden md:table-cell">₱500.00</td>
+                        <tbody id="tableBody" class="divide-y divide-slate-100 h-full">
+                            <tr class="bg-secondary/10 transition-colors border-b border-gray-100">
+                                <td class="py-4 pl-5 font-semibold text-dark-blue">Regular</td>
+                                <td class="py-4 pl-5  hidden sm:table-cell">512</td>
+                                <td class="py-4 pl-5  hidden md:table-cell">₱52,300</td>
+                                <td class="py-4 pl-5  hidden lg:table-cell">₱102.15</td>
+                                <td class="py-4 pl-5  hidden xl:table-cell">₱0.00</td>
+                                <td class="py-4 pl-5 pr-5  hidden xl:table-cell">35%</td>
                             </tr>
 
-                            <!-- No Sales Record -->
-                            <!-- <tr class="h-1 colspan-full">
-                                <td colspan="4">
+                            <tr class="transition-colors border-b border-gray-100">
+                                <td class="py-4 pl-5 font-semibold ">Senior Citizen</td>
+                                <td class="py-4 pl-5  hidden sm:table-cell">204</td>
+                                <td class="py-4 pl-5  hidden md:table-cell">₱32,900</td>
+                                <td class="py-4 pl-5  hidden lg:table-cell">₱161.27</td>
+                                <td class="py-4 pl-5  hidden xl:table-cell">₱6,580.00</td>
+                                <td class="py-4 pl-5 pr-5  hidden xl:table-cell">22%</td>
+                            </tr>
+
+                            <tr class="bg-secondary/10 transition-colors border-b border-gray-100">
+                                <td class="py-4 pl-5 font-semibold ">PWD</td>
+                                <td class="py-4 pl-5  hidden sm:table-cell">168</td>
+                                <td class="py-4 pl-5  hidden md:table-cell">₱26,850</td>
+                                <td class="py-4 pl-5  hidden lg:table-cell">₱159.82</td>
+                                <td class="py-4 pl-5  hidden xl:table-cell">₱5,370.00</td>
+                                <td class="py-4 pl-5 pr-5  hidden xl:table-cell">18%</td>
+                            </tr>
+
+                            <tr class="transition-colors border-b border-gray-100">
+                                <td class="py-4 pl-5 font-semibold ">Employee</td>
+                                <td class="py-4 pl-5  hidden sm:table-cell">139</td>
+                                <td class="py-4 pl-5  hidden md:table-cell">₱17,940</td>
+                                <td class="py-4 pl-5  hidden lg:table-cell">₱129.06</td>
+                                <td class="py-4 pl-5  hidden xl:table-cell">₱1,794.00</td>
+                                <td class="py-4 pl-5 pr-5  hidden xl:table-cell">12%</td>
+                            </tr>
+
+                            <tr class="bg-secondary/10 transition-colors border-b border-gray-100">
+                                <td class="py-4 pl-5 font-semibold ">VIP</td>
+                                <td class="py-4 pl-5  hidden sm:table-cell">96</td>
+                                <td class="py-4 pl-5  hidden md:table-cell">₱19,410</td>
+                                <td class="py-4 pl-5  hidden lg:table-cell">₱202.19</td>
+                                <td class="py-4 pl-5  hidden xl:table-cell">₱2,911.50</td>
+                                <td class="py-4 pl-5 pr-5  hidden xl:table-cell">13%</td>
+                            </tr>
+
+                            <tr id="emptySearchResultRow" class="hidden colspan-full">
+                                <td colspan="6">
                                     <div class="w-full h-full flex flex-col items-center justify-center gap-2 p-15 text-center">
-                                        <img class="size-35 lg:size-100" src="../../../assets/image/empty_sales_record.png" alt="">
-                                        <p class="font-semibold">Oops! There are no sales record saved here...</p>
-                                        <p class="text-gray-600/80">There are no recorded sales record here. Please create one transaction to see result.</p>
-                                        <button class="bg-primary px-4 py-2 rounded-md text-white cursor-pointer">Add Record</button>
+                                        <img class="size-35 lg:size-100" src="../../assets/image/no_result.png" alt="">
+                                        <p class="font-semibold">Oops! Can't find what you need.</p>
+                                        <p class="text-gray-600/80">There is no results that matches what you're searching. Please try again.</p>
                                     </div>
                                 </td>
-                            </tr> -->
-
-                            <!-- Invisible Row -->
-                            <tr class="h-auto col-span-full">
-                                <td colspan="3"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -432,6 +435,24 @@
     <script src="../../js/salesPerCustomerType.js"></script>
     <script src="../../js/jquery.min.js"></script>
     <script type="module">
+        /*
+        ==============================================================================
+        MAIN FUNCTIONS 
+         - Functions that are needed/required and do specific things 
+        ==============================================================================
+        */
+
+
+        /*
+        ==============================================================================
+        TOGGLE FUNCTIONS 
+        - Functions just show/hide elements
+        ==============================================================================
+         */
+        $("#toggleDateRangeFilterBtn").on("click", function() {
+            $("#dashboardDateRangeFilter").toggleClass("hidden").toggleClass("opacity-0");
+        })
+
         $("#sidebar ").on("mouseenter", function() {
             $("#sidebar .sidebar-hidden-item").removeClass("lg:hidden").show(200);
             $("#sidebar a").removeClass("lg:w-fit");
@@ -463,6 +484,13 @@
                 }, 5000);
             })
         }
+
+        /*
+        ==============================================================================
+        HELPER FUNCTIONS, ADDITIONAL FUNCTIONS & EVENT LISTENER FUNCTIONS
+        - Functions to help reduce redundancy
+        ==============================================================================
+        */
     </script>
 </body>
 
